@@ -46,7 +46,7 @@ slots-FX-skill/
 
 ## 当前版本
 
-**v1 优化13**（2026-03-05）
+**v1 优化15**（2026-03-05）
 
 | 版本 | 优化内容 |
 |------|---------|
@@ -60,3 +60,9 @@ slots-FX-skill/
 | v1 优化7 | Seedance 语境锚定句，叙事版模板，专属词汇库 |
 | v1 优化8 | 风格识别层 S1–S9，STYLE MOTION PROFILES 章节 |
 | v1 优化9 | MANDATORY EXECUTION RULES，修复流程跳步根本原因 |
+| v1 优化10 | MANDATORY EXECUTION RULES 补充 Scene B/C 守门步骤 |
+| v1 优化11 | 移除英文输出模板，改为纯中文单语输出 |
+| v1 优化12 | Vidu 首尾帧结构 + 官方中文动态词 + Level 3 Idle 升级中等动态 |
+| v1 优化13 | Seedance 全模板补充 @图片1 引用，B/C 模板拆分独立版本 |
+| v1 优化14 | 新增 TRIGGER CONDITIONS 自动触发章节 |
+| v1 优化15 | Seedance 全模板简洁化，去除【】标签，连贯叙述格式 |
