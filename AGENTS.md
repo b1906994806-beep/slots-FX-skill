@@ -38,6 +38,7 @@
 
 | 标签 | 触发条件 | 处理方式 |
 |------|---------|---------|
+| `optimization-idea` | 用户记录的优化想法，token 不足时暂存 | **仅记录，不主动修复**；等待用户在 Claude 会话中处理 |
 | `output-quality` | 生成的提示词效果不符合预期 | 定位对应模板或规则，提出修改方案 |
 | `ux-flow` | 流程步骤有歧义或缺口 | 检查 STEP 1–3 流程，修复问题步骤 |
 | `tool-adaptation` | Vidu Q2 或 Seedance 2.0 有新特性/参数变更 | 更新对应工具的模板和词汇 |
@@ -45,6 +46,15 @@
 | `new-style` | 需要新增美术风格类别 | 在 Style Detection 表和 STYLE MOTION PROFILES 中添加新行 |
 | `template-gap` | 某场景缺少对应模板 | 新增模板，遵循现有模板结构 |
 | `bug` | Skill 流程存在逻辑错误 | 定位错误位置，修复并说明原因 |
+
+### optimization-idea 处理规则
+
+`optimization-idea` 标签的 Issue 是用户在 Claude token 不足时的**跨会话记忆**，Codex 的职责是：
+
+1. **帮助用户结构化记录**想法，确保信息完整（方向、背景、期望效果、优先级）
+2. **不要自行修改** `slots_animation_prompt_skill_v1_claude.md`
+3. **添加评论**总结该 Issue 与现有 Skill 的关联位置，方便 Claude 下次快速定位
+4. Issue 由 Claude 在新会话中处理后，将状态标记为 `closed` 并注明 commit hash
 
 ---
 
