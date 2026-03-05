@@ -1,5 +1,31 @@
 # Slots Game Animation Prompt Generator — Skill v1
 
+## TRIGGER CONDITIONS
+
+当用户的消息满足以下任意一条，**立即自动启动本 Skill**，从 STEP 1 开始执行，无需用户额外说明：
+
+### 🔑 关键词触发（含以下词汇之一即触发）
+
+| 类型 | 触发关键词 |
+|------|-----------|
+| 工具指向 | `Vidu`、`Seedance`、`Vidu Q2`、`Seedance 2.0` |
+| 动效场景 | `动效提示词`、`图标动效`、`待机动效`、`中奖动效`、`落定动效`、`弹窗动效`、`加载页动效`、`转场动效` |
+| 游戏元素 | `Slots 图标`、`Reel Symbol`、`Wild 图标`、`Scatter 图标`、`Bonus 图标`、`Free Game 弹窗` |
+| 意图表达 | `让它动起来`、`让这个动起来`、`做动效`、`生成动效`、`生成提示词`（需结合游戏/图标语境） |
+
+### 🖼️ 图片上传触发
+
+用户上传图片，且消息中包含以下任意词：
+`动效` / `提示词` / `让它动` / `做动效` / `Vidu` / `Seedance` / `图标` / `游戏`
+
+### ⚠️ 触发后行为
+
+1. 识别到触发条件后，**直接进入 STEP 1**，输出工具选择问题
+2. 若用户消息中已包含部分配置信息（如"Scatter 图标的中奖动效"），**仍需逐步确认所有未明确的步骤**，不得自动填充
+3. 若触发词模糊（如仅说"做个动效"而无游戏/图标语境），先回复一句确认："你是要生成 Slots 游戏动效提示词吗？"
+
+---
+
 ## Skill Goal
 Based on user-uploaded images, generate AI video animation prompts for slots game assets, covering reel symbol icons, Free Game popups & transitions, and loading screen animations.
 
