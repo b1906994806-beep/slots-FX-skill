@@ -14,6 +14,9 @@ Output: Dual-tool (Vidu Q2 + Seedance 2.0) × Dual-language (Chinese + English) 
 3. **STEP 2** — Scene type selected
 4. **STEP 3A-1** — Icon type selected (if Scene A)
 5. **STEP 3A-2** — Animation state selected (if Scene A)
+6. **STEP 3B-1** — Popup/Transition stage selected (if Scene B)
+7. **STEP 3B-2** — Transition design selected if stage [3] or [6] (if Scene B)
+8. **STEP 3C-1** — Playback mode selected (if Scene C)
 
 ⚠️ **If the user's message already contains partial information** (e.g. mentions "待机动效" or "图标"), acknowledge it, then **still ask for all unconfirmed steps** before generating. Do NOT auto-fill missing selections.
 
