@@ -412,16 +412,20 @@ Describe ALL applicable items from the following:
 
 ## INTENSITY MAPPING
 
-| Level | Icon Type | Vidu Q2 Parameter | Seedance Keywords |
-|-------|-----------|-------------------|-------------------|
-| Level 1 | Low-tier | motion amplitude: small | Subtle / Gentle / Minimal |
-| Level 2 | High-tier | motion amplitude: medium | Moderate / Smooth / Controlled |
-| Level 3 | Special (Wild/Scatter/Bonus) | motion amplitude: large | Dynamic / Energetic / Expressive |
-| Popup Entry | — | motion amplitude: medium-large | Bold / Dramatic / Impactful |
-| Popup Idle | — | motion amplitude: small | Gentle / Continuous / Soft |
-| Transition | — | motion amplitude: large | Sweeping / Immersive / Fluid |
-| Loading One-shot | — | motion amplitude: medium | Progressive / Clear / Cinematic |
-| Loading Loop | — | motion amplitude: small | Ambient / Seamless / Breathable |
+> Vidu Q2 使用官方中文触发词；Seedance 使用语言描述词。
+
+| Level | Icon Type | Vidu Q2 动态词 | Seedance Keywords |
+|-------|-----------|----------------|-------------------|
+| Level 1 | Low-tier (Win) | 小幅动态 | Subtle / Gentle / Minimal |
+| Level 2 | High-tier (Win) | 中等动态 | Moderate / Smooth / Controlled |
+| Level 3 Win | Special (Wild/Scatter/Bonus) | 大动态 | Dynamic / Energetic / Expressive |
+| Level 3 Idle | Special (Wild/Scatter/Bonus) | 中等动态 | Gentle / Continuous / Soft |
+| Level 3 Land | Special (Wild/Scatter/Bonus) | 中等动态 | Moderate / Impactful / Snappy |
+| Popup Entry | — | 大动态 | Bold / Dramatic / Impactful |
+| Popup Idle | — | 小幅动态 | Gentle / Continuous / Soft |
+| Transition | — | 大动态 | Sweeping / Immersive / Fluid |
+| Loading One-shot | — | 中等动态 | Progressive / Clear / Cinematic |
+| Loading Loop | — | 小幅动态 | Ambient / Seamless / Breathable |
 
 ---
 
@@ -450,7 +454,22 @@ Describe ALL applicable items from the following:
 
 ### Template A: Icon Animation — Full Reference Mode
 
-**中文模板：**
+**Vidu Q2 模板：**
+```
+娱乐游戏数字转轴符号动效，固定镜头。
+
+[用连贯口语化叙述描述完整动效，不使用分段标签]
+按主体专项动作规则，明确"X带动Y，Y延迟跟随Z"的因果链逐部位描述，
+必须指定：哪个部位 / 做了什么 / 带动了什么跟随运动。
+在叙述中自然融入氛围词，并在描述末尾再次重复强化1-2个核心氛围词。
+
+高光触发（仅待机态）：每 8–10 秒触发一次短暂增强脉冲（0.5–1.0 秒）。
+
+固定镜头，保持主体外形纹理色彩一致，无变形。
+[小幅动态 / 中等动态 / 大动态]
+```
+
+**Seedance 2.0 模板：**
 ```
 娱乐游戏数字转轴符号动效，固定镜头。
 
@@ -472,9 +491,9 @@ Describe ALL applicable items from the following:
 ---
 
 保持主体外形、纹理、色彩一致，无变形。
-待机态小幅度，中奖态大幅度，流畅节奏，待机态无缝循环。
+待机态中等动态，中奖态大动态，流畅节奏，待机态无缝循环。
 避免快速闪烁、剧烈运动、镜头移动或朝向改变。
-动效强度：[小 / 中 / 大]
+Maintain visual consistency, no distortion, high detail, seamless loop (if applicable), [Subtle/Moderate/Dynamic] motion, smooth pacing.
 ```
 
 **Seedance 叙事版 [可选]:**
@@ -493,10 +512,34 @@ Describe ALL applicable items from the following:
 
 ### Template A2: Icon Animation — First-Last Frame Mode
 
-首尾帧模式同样输出双语 × 双工具版本，格式与全能参考模式一致。
 根据 STEP 1.2 中选择的意图 [A/B/C/D] 填写对应描述。
+Vidu Q2 使用官方首帧/中间帧/尾帧结构；Seedance 2.0 使用分段标签结构。
 
-**中文模板：**
+---
+
+**Vidu Q2 模板：**
+```
+首帧：[描述上传图片的精确静止状态——主体姿势、表情、眼睛状态、嘴部状态、身体位置、能量层级、整体氛围]
+
+中间帧：[描述完整动效弧线——
+  触发：什么启动了动效
+  动作序列：按主体专项规则逐部位描述，明确"X带动Y，Y延迟跟随Z"的因果链
+  （依次指定：下颌 / 眼睛 / 耳朵 / 颈部 / 四肢 / 尾部等）
+  能量变化：氛围光效从低到峰值再收束的完整过程
+  氛围词重复强化：在此处再次强调1-2个核心氛围词]
+
+尾帧：
+  - 意图 [A] 让它动起来：自然收束，描述动效最终停稳的状态
+  - 意图 [B] 还原这一刻：主体回到首帧图片的静止状态，能量收束，粒子消散
+  - 意图 [C] 回到原位：与首帧完全相同，[核心氛围词]，无缝循环
+  - 意图 [D] 从A到B：主体稳定在第二张图片的状态，描述最终姿态
+
+固定镜头，保持主体外形纹理色彩一致，无变形。[小幅动态 / 中等动态 / 大动态]
+```
+
+---
+
+**Seedance 2.0 模板：**
 ```
 【起始状态】来自上传图片：描述主体的初始静态状态——
 姿势、表情、眼睛状态、嘴部状态、身体位置、能量层级。
@@ -514,8 +557,8 @@ Describe ALL applicable items from the following:
 - 意图 [C] 回到原位：主体运动后回到与起始图相同的状态，描述收尾过程（无缝循环）。
 - 意图 [D] 从A到B：主体从第一张图状态运动至第二张图状态，描述最终稳定姿态。
 
-保持主体外形与表面细节一致，无变形。
-动效强度：[小 / 中 / 大]。时长：[根据等级填写]。
+保持主体外形与表面细节一致，无变形。[小幅动态 / 中等动态 / 大动态]
+Maintain visual consistency, no distortion, high detail, seamless loop (if applicable), [Subtle/Moderate/Dynamic] motion, smooth pacing.
 ```
 
 
@@ -708,6 +751,8 @@ For every generation, output **all selected tool versions** in the following for
 - Internal logic and recognition rules may be upgraded at any time
 - **The output template structure must remain unchanged**
 - All output prompts must be in **Chinese only**
+- **Vidu Q2 提示词规则：** 使用连贯口语化叙述，不使用`【】`分段标签；动态词使用官方中文触发词（小幅动态/中等动态/大动态）；关键氛围词在提示词中重复出现2次以上以强化效果
+- **Vidu Q2 首尾帧模式专用：** 必须使用`首帧 / 中间帧 / 尾帧`三段结构输出，不得使用其他格式
 - Always perform Style Detection (S1–S9) before generating prompts; incorporate the matched style motion vocabulary naturally into subject action and atmosphere descriptions
 - **NEVER skip or auto-fill any configuration step**, even if the user's message contains partial information. Always surface unconfirmed steps explicitly before generating output.
 - **NEVER interpret "automatically analyze" as permission to bypass user confirmation steps.** Automatic analysis applies only to image content (subject detection, layer decomposition, style detection) — not to configuration selections.
