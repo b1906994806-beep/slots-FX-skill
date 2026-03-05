@@ -3,7 +3,7 @@
 ## Skill Goal
 Based on user-uploaded images, generate AI video animation prompts for slots game assets, covering reel symbol icons, Free Game popups & transitions, and loading screen animations.
 
-Output: Dual-tool (Vidu Q2 + Seedance 2.0) × Dual-language (Chinese + English) prompts simultaneously.
+Output: Dual-tool (Vidu Q2 + Seedance 2.0) × Chinese prompts simultaneously.
 
 ## MANDATORY EXECUTION RULES
 
@@ -477,44 +477,14 @@ Describe ALL applicable items from the following:
 动效强度：[小 / 中 / 大]
 ```
 
-**English Template:**
-```
-Mobile entertainment animation for a digital spinning reel game — reel symbol animation, fixed camera.
-
-[Primary Motion — EXPLICIT BODY ACTION REQUIRED]
-Describe subject-specific body motion using Subject-Specific Body Motion Rules.
-Never use vague phrases like "surges forward" alone —
-always specify: which body part / what movement / in what sequence.
-
-[Atmosphere] Describe background energy, aura, or light effects.
-
-[Particles] Describe particle effects (coins / gems / sparks / lightning).
-
-[UI/Title] Describe any text or border animation if present.
-
----
-
-[Highlight Trigger — Idle state only] Every 8–10 seconds:
-Describe brief enhancement pulse (0.5–1.0 second).
-
----
-
-Maintain subject appearance, stripe/texture/color consistency. No distortion.
-Small amplitude for idle, large for win. Smooth pacing, seamless looping for idle.
-Avoid fast flashing, violent motion, camera movement, or direction changes.
-Motion amplitude: [small / medium / large based on level]
-```
-
 **Seedance 叙事版 [可选]:**
 ```
-Mobile entertainment animation for a digital spinning reel game — reel symbol animation, fixed camera.
+娱乐游戏数字转轴符号动效，固定镜头。
 
 [用自然叙事段落描述完整动效过程，无需分段标签]
-示例（猛虎中奖）：A fierce tiger surges forward as it claims its reward — jaw snapping open
-to reveal gleaming fangs, eyes narrowing then igniting with golden light, neck muscles
-tensing as energy rings explode outward and coins shower down in cascading arcs.
-Camera holds steady. No distortion. Dynamic motion, seamless loop.
-Motion amplitude: [small / medium / large]
+示例（猛虎中奖）：猛虎在中奖瞬间向前冲刺——下颌猛然张开，利齿清晰可见，眼睛由紧缩
+骤然迸发出金色光焰，颈部肌肉绷紧隆起，能量环向外爆裂扩散，金币如瀑布般倾泻而下。
+固定镜头，无变形，动感十足，无缝循环。动效强度：[小 / 中 / 大]
 ```
 
 > **使用说明：** 叙事版适合复杂有机主体（动物/角色）；简单几何主体（宝石/硬币）使用结构化版即可。
@@ -548,28 +518,6 @@ Motion amplitude: [small / medium / large]
 动效强度：[小 / 中 / 大]。时长：[根据等级填写]。
 ```
 
-**English Template:**
-```
-[Starting State] From @Image1: describe the subject's exact initial state —
-pose, expression, eye state, mouth state, body position, energy level.
-
-[Animation Arc] Describe the motion journey:
-- Trigger moment: what initiates the animation
-- Motion sequence: step-by-step body actions using Subject-Specific Body Motion Rules
-  (specify each body part explicitly: jaw / eyes / ears / neck / limbs in sequence)
-- Energy buildup: atmosphere, particles, light effects progression
-- Peak moment: describe the climax state
-
-[Ending State]
-- Intent [A] Animate FROM this image: AI determines ending state; describe how motion naturally settles.
-- Intent [B] Animate TO this image: subject arrives at @Image1 resting state, energy settles, particles dissolve.
-- Intent [C] Loop back to original: subject returns to starting state after motion; describe settle-down (seamless loop).
-- Intent [D] From A to B: subject moves from @Image1 state to @Image2 state; describe final stabilized pose.
-
-Maintain subject appearance and surface detail consistency throughout.
-No distortion. Motion amplitude: [small / medium / large].
-Duration: [1–2s / 1.5–2.5s / 2–3s based on level].
-```
 
 ---
 
@@ -597,27 +545,6 @@ Duration: [1–2s / 1.5–2.5s / 2–3s based on level].
 避免突然出现或硬边缘。动效强度：中大。
 ```
 
-**English Template:**
-```
-Mobile entertainment animation for a digital spinning reel game — Free Game trigger popup entry, fixed camera.
-
-[Panel Entry] Describe how the popup frame appears (scale in / slide in / fade in with easing).
-
-[Main Subject] Describe reward subject entrance animation and expression.
-
-[Atmosphere] Describe background light and energy buildup.
-
-[Particles] Describe coins / starlight / sparks during entry.
-
-[Title] Describe title text appearance animation.
-
-[Enhancement] Describe burst or golden flash at entry completion.
-
----
-
-Smooth entry with easing, panel boundaries clear, text readable.
-Avoid abrupt appearance or hard edges. Motion amplitude: medium-large.
-```
 
 ---
 
@@ -643,25 +570,6 @@ Avoid abrupt appearance or hard edges. Motion amplitude: medium-large.
 轻柔、持续、无缝循环，无突然动作。动效强度：小。
 ```
 
-**English Template:**
-```
-Mobile entertainment animation for a digital spinning reel game — Free Game trigger popup idle, fixed camera, seamless loop.
-
-[Main Subject] Describe gentle continuous motion of reward subject.
-
-[Atmosphere] Describe slow glow pulse on panel border and background energy.
-
-[Particles] Describe slow particle drift (coins / gems floating softly).
-
----
-
-[Highlight Trigger] Every 8–10 seconds, 0.5–1.0 second:
-Describe brief amplified glow or particle pulse.
-
----
-
-Gentle, continuous, seamless loop. No sudden movements. Motion amplitude: small.
-```
 
 ---
 
@@ -688,26 +596,6 @@ Gentle, continuous, seamless loop. No sudden movements. Motion amplitude: small.
 转场时长 1.5–3 秒。动效强度：大。
 ```
 
-**English Template:**
-```
-Mobile entertainment animation for a digital spinning reel game — scene transition, smooth and immersive.
-
-[Energy] Describe energy wave or light ring expansion.
-
-[Light] Describe light beam or sweep motion across screen.
-
-[Particles] Describe starlight or spark trail during transition.
-
-[Scene Cut] Describe how the screen transition occurs within peak energy moment.
-
-[Universal Transition — if selected] Scatter symbol appears at center as visual anchor.
-Energy radiates outward from symbol, light rings expand, transition occurs at peak expansion.
-
----
-
-Seamless spatial flow, no hard cuts, player feels continuous immersion.
-Transition duration 1.5–3 seconds. Motion amplitude: large.
-```
 
 ---
 
@@ -737,29 +625,6 @@ Transition duration 1.5–3 seconds. Motion amplitude: large.
 避免混乱或难以辨识。动效强度：中大。
 ```
 
-**English Template:**
-```
-Mobile entertainment animation for a digital spinning reel game — Free Game settlement popup entry, fixed camera.
-
-[Panel Entry] Describe popup frame appearance with energy expansion.
-
-[Reward Subject] Describe main reward subject (chest / coins / icon) entrance animation.
-
-[Number Roll] Describe reward amount number rolling up animation.
-
-[Atmosphere] Describe golden light and energy filling the scene.
-
-[Particles] Describe coin shower or particle burst.
-
-[Title] Describe victory text appearance and glow.
-
-[Enhancement] Describe climactic burst effect at entry completion.
-
----
-
-Celebratory but controlled, numbers clearly readable, ordered rhythm.
-Avoid chaos or illegibility. Motion amplitude: medium-large.
-```
 
 ---
 
@@ -787,28 +652,6 @@ Avoid chaos or illegibility. Motion amplitude: medium-large.
 温暖庆祝氛围，无缝循环，数字清晰可读。动效强度：小。
 ```
 
-**English Template:**
-```
-Mobile entertainment animation for a digital spinning reel game — Free Game settlement popup idle, fixed camera, seamless loop.
-
-[Reward Subject] Describe gentle continuous motion of main reward element.
-
-[Numbers] Describe soft number glow or shimmer (no rolling, just glow).
-
-[Atmosphere] Describe slow golden light pulse and ambient energy.
-
-[Particles] Describe slow coin float or gentle gem sparkle.
-
----
-
-[Highlight Trigger] Every 8–10 seconds, 0.5–1.0 second:
-Describe brief golden flash or coin bounce enhancement.
-
----
-
-Warm, celebratory ambiance. Seamless loop. Numbers readable.
-Motion amplitude: small.
-```
 
 ---
 
@@ -833,24 +676,6 @@ Motion amplitude: small.
 动效强度：[单次：中 / 循环：小]。
 ```
 
-**English Template:**
-```
-Mobile entertainment animation for a digital spinning reel game — loading screen [one-shot / loop], fixed camera.
-
-[Background] Describe background progressive brightening or atmospheric motion.
-
-[Main Subject] Describe [user-described subject] entrance or continuous motion.
-
-[Logo] Describe game logo appearance with emphasis animation.
-
-[Atmosphere] Describe overall light and energy mood.
-
----
-
-[One-shot constraints] Clear beginning and completion feel. Duration 3–5 seconds.
-[Loop constraints] Seamless loop, no visible restart, ambient and breathable.
-Motion amplitude: [medium for one-shot / small for loop].
-```
 
 ---
 
@@ -862,30 +687,18 @@ For every generation, output **all selected tool versions** in the following for
 
 ### 【Vidu Q2 版本】
 
-**中文提示词：**
+**提示词：**
 ```
 [根据对应模板填写，使用中文，motion amplitude 参数标注在末尾]
-```
-
-**English Prompt:**
-```
-[Template filled in English, motion amplitude: small/medium/large noted at end]
 ```
 
 ---
 
 ### 【Seedance 2.0 版本】
 
-**中文提示词：**
+**提示词：**
 ```
 [根据对应模板填写，使用中文，结尾必须包含约束语]
-```
-
-**English Prompt:**
-```
-[Template filled in English.
-End with explicit constraint line:
-"Maintain visual consistency, no distortion, high detail, seamless loop (if applicable), [Subtle/Moderate/Dynamic] motion, smooth pacing."]
 ```
 
 ---
@@ -894,6 +707,7 @@ End with explicit constraint line:
 
 - Internal logic and recognition rules may be upgraded at any time
 - **The output template structure must remain unchanged**
+- All output prompts must be in **Chinese only**
 - Always perform Style Detection (S1–S9) before generating prompts; incorporate the matched style motion vocabulary naturally into subject action and atmosphere descriptions
 - **NEVER skip or auto-fill any configuration step**, even if the user's message contains partial information. Always surface unconfirmed steps explicitly before generating output.
 - **NEVER interpret "automatically analyze" as permission to bypass user confirmation steps.** Automatic analysis applies only to image content (subject detection, layer decomposition, style detection) — not to configuration selections.
