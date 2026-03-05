@@ -471,7 +471,7 @@ Describe ALL applicable items from the following:
 
 **Seedance 2.0 模板：**
 ```
-娱乐游戏数字转轴符号动效，固定镜头。
+@图片1的[主体核心特征一句话描述]，娱乐游戏数字转轴符号动效，固定镜头，[风格质感]，[节奏氛围]。
 
 【主体动作 — 必须明确描述具体部位动作】
 按主体专项动作规则逐部位描述，禁止仅使用"向前冲"等模糊表达，
@@ -498,12 +498,12 @@ Maintain visual consistency, no distortion, high detail, seamless loop (if appli
 
 **Seedance 叙事版 [可选]:**
 ```
-娱乐游戏数字转轴符号动效，固定镜头。
+@图片1的[主体核心特征一句话描述]，娱乐游戏数字转轴符号动效，固定镜头，[风格质感]。
 
 [用自然叙事段落描述完整动效过程，无需分段标签]
 示例（猛虎中奖）：猛虎在中奖瞬间向前冲刺——下颌猛然张开，利齿清晰可见，眼睛由紧缩
 骤然迸发出金色光焰，颈部肌肉绷紧隆起，能量环向外爆裂扩散，金币如瀑布般倾泻而下。
-固定镜头，无变形，动感十足，无缝循环。动效强度：[小 / 中 / 大]
+固定镜头，无变形，动感十足，无缝循环。[Subtle/Moderate/Dynamic] motion, smooth pacing.
 ```
 
 > **使用说明：** 叙事版适合复杂有机主体（动物/角色）；简单几何主体（宝石/硬币）使用结构化版即可。
@@ -541,8 +541,9 @@ Vidu Q2 使用官方首帧/中间帧/尾帧结构；Seedance 2.0 使用分段标
 
 **Seedance 2.0 模板：**
 ```
-【起始状态】来自上传图片：描述主体的初始静态状态——
-姿势、表情、眼睛状态、嘴部状态、身体位置、能量层级。
+@图片1的[主体核心特征一句话描述]，娱乐游戏数字转轴符号动效，固定镜头，[风格质感]，[节奏氛围]。
+
+【起始状态】@图片1中主体的静止状态——姿势、表情、眼睛状态、嘴部状态、身体位置、能量层级。
 
 【动效弧线】描述运动过程：
 - 触发时机：什么动作启动了动效
@@ -553,9 +554,9 @@ Vidu Q2 使用官方首帧/中间帧/尾帧结构；Seedance 2.0 使用分段标
 
 【结束状态】
 - 意图 [A] 让它动起来：AI 自行决定结束状态，描述动效自然收束方式。
-- 意图 [B] 还原这一刻：主体到达上传图的静止状态，能量收束，粒子消散。
-- 意图 [C] 回到原位：主体运动后回到与起始图相同的状态，描述收尾过程（无缝循环）。
-- 意图 [D] 从A到B：主体从第一张图状态运动至第二张图状态，描述最终稳定姿态。
+- 意图 [B] 还原这一刻：主体回到@图片1的静止状态，能量收束，粒子消散。
+- 意图 [C] 回到原位：主体运动后回到与@图片1相同的状态（无缝循环）。
+- 意图 [D] 从A到B：主体从@图片1状态运动至@图片2状态，描述最终稳定姿态。
 
 保持主体外形与表面细节一致，无变形。[小幅动态 / 中等动态 / 大动态]
 Maintain visual consistency, no distortion, high detail, seamless loop (if applicable), [Subtle/Moderate/Dynamic] motion, smooth pacing.
@@ -566,9 +567,18 @@ Maintain visual consistency, no distortion, high detail, seamless loop (if appli
 
 ### Template B1: Trigger Popup Entry
 
-**中文模板：**
+**Vidu Q2 模板：**
 ```
-娱乐游戏 Free Game 触发弹窗入场动效，固定镜头。
+娱乐游戏 Free Game 触发弹窗入场动效，固定镜头，大动态。
+
+[连贯叙述：面板弹入方式 → 主体入场动作及表情 → 背景光效能量积蓄 → 粒子效果 → 标题文字出现 → 入场完成爆发]
+
+带缓动的流畅入场，面板边界清晰，文字可读。
+```
+
+**Seedance 2.0 模板：**
+```
+@图片1的[弹窗主体核心特征]，娱乐游戏 Free Game 触发弹窗入场动效，固定镜头，[风格质感]，大动态。
 
 【面板入场】描述弹窗框体出现方式（缩放弹入 / 滑入 / 带缓动淡入）。
 
@@ -582,10 +592,8 @@ Maintain visual consistency, no distortion, high detail, seamless loop (if appli
 
 【强化效果】描述入场完成时的爆发或金光效果。
 
----
-
-带缓动的流畅入场，面板边界清晰，文字可读。
-避免突然出现或硬边缘。动效强度：中大。
+带缓动的流畅入场，面板边界清晰，文字可读，避免突然出现或硬边缘。
+Maintain visual consistency, no distortion, Bold motion, smooth pacing.
 ```
 
 
@@ -593,9 +601,19 @@ Maintain visual consistency, no distortion, high detail, seamless loop (if appli
 
 ### Template B2: Trigger Popup Idle
 
-**中文模板：**
+**Vidu Q2 模板：**
 ```
-娱乐游戏 Free Game 触发弹窗待机动效，固定镜头，无缝循环。
+娱乐游戏 Free Game 触发弹窗待机动效，固定镜头，无缝循环，小幅动态。
+
+[连贯叙述：主体轻柔持续动作 → 面板边框光晕脉冲 → 粒子缓慢漂浮]
+
+高光触发：每 8–10 秒，持续 0.5–1.0 秒短暂增强脉冲。
+轻柔、持续、无缝循环，无突然动作，小幅动态。
+```
+
+**Seedance 2.0 模板：**
+```
+@图片1的[弹窗主体核心特征]，娱乐游戏 Free Game 触发弹窗待机动效，固定镜头，无缝循环，[风格质感]，轻柔持续。
 
 【主体动效】描述奖励主体的轻柔持续动作。
 
@@ -603,14 +621,9 @@ Maintain visual consistency, no distortion, high detail, seamless loop (if appli
 
 【粒子动效】描述金币 / 宝石缓慢漂浮的粒子效果。
 
----
+【高光触发】每 8–10 秒，持续 0.5–1.0 秒：描述短暂增强的光晕或粒子脉冲。
 
-【高光触发】每 8–10 秒，持续 0.5–1.0 秒：
-描述短暂增强的光晕或粒子脉冲。
-
----
-
-轻柔、持续、无缝循环，无突然动作。动效强度：小。
+Maintain visual consistency, no distortion, seamless loop, Gentle motion, smooth pacing.
 ```
 
 
@@ -618,9 +631,19 @@ Maintain visual consistency, no distortion, high detail, seamless loop (if appli
 
 ### Template B3: Transition (IN / OUT)
 
-**中文模板：**
+**Vidu Q2 模板：**
 ```
-娱乐游戏场景转场动效，平滑沉浸式过渡。
+娱乐游戏场景转场动效，平滑沉浸式过渡，大动态。
+
+[连贯叙述：能量波/光圈扩散 → 光束扫过画面 → 粒子轨迹 → 画面在能量峰值时切换]
+
+通用转场（如已选）：Scatter 图标出现画面中心，能量向外辐射，光圈扩散至全屏，转场发生在扩散峰值。
+无缝空间感，无硬切，转场时长 1.5–3 秒，大动态。
+```
+
+**Seedance 2.0 模板：**
+```
+@图片1的[转场核心视觉元素描述]，娱乐游戏场景转场动效，平滑沉浸式过渡，[风格质感]，大动态。
 
 【能量动效】描述能量波或光圈的扩散方式。
 
@@ -630,13 +653,11 @@ Maintain visual consistency, no distortion, high detail, seamless loop (if appli
 
 【场景过渡】描述画面切换在能量峰值时刻发生的方式。
 
-【通用转场（如已选择）】Scatter 图标出现在画面中心作为视觉锚点，
+【通用转场（如已选择）】@图片1的 Scatter 图标出现在画面中心作为视觉锚点，
 能量从图标向外辐射，光圈扩散，转场发生在扩散峰值时刻。
 
----
-
-无缝空间感，无硬切，玩家感受连续沉浸体验。
-转场时长 1.5–3 秒。动效强度：大。
+无缝空间感，无硬切，转场时长 1.5–3 秒。
+Maintain visual consistency, Sweeping motion, smooth immersive pacing.
 ```
 
 
@@ -644,9 +665,18 @@ Maintain visual consistency, no distortion, high detail, seamless loop (if appli
 
 ### Template B4: Settlement Popup Entry
 
-**中文模板：**
+**Vidu Q2 模板：**
 ```
-娱乐游戏 Free Game 结算弹窗入场动效，固定镜头。
+娱乐游戏 Free Game 结算弹窗入场动效，固定镜头，大动态。
+
+[连贯叙述：面板伴随能量扩散出现 → 奖励主体入场动作 → 数字向上滚动 → 金光充满画面 → 金币爆发 → 胜利文字出现 → 高潮爆发]
+
+庆祝感强烈但节奏有序，数字清晰可读，大动态。
+```
+
+**Seedance 2.0 模板：**
+```
+@图片1的[结算弹窗主体核心特征]，娱乐游戏 Free Game 结算弹窗入场动效，固定镜头，[风格质感]，大动态。
 
 【面板入场】描述弹窗框体伴随能量扩散的出现方式。
 
@@ -662,10 +692,8 @@ Maintain visual consistency, no distortion, high detail, seamless loop (if appli
 
 【强化效果】描述入场完成时的高潮爆发效果。
 
----
-
-庆祝感强烈但节奏有序，数字清晰可读。
-避免混乱或难以辨识。动效强度：中大。
+庆祝感强烈但节奏有序，数字清晰可读，避免混乱。
+Maintain visual consistency, no distortion, Bold motion, smooth pacing.
 ```
 
 
@@ -673,9 +701,19 @@ Maintain visual consistency, no distortion, high detail, seamless loop (if appli
 
 ### Template B5: Settlement Popup Idle
 
-**中文模板：**
+**Vidu Q2 模板：**
 ```
-娱乐游戏 Free Game 结算弹窗待机动效，固定镜头，无缝循环。
+娱乐游戏 Free Game 结算弹窗待机动效，固定镜头，无缝循环，小幅动态。
+
+[连贯叙述：奖励主体轻柔持续动作 → 数字柔和发光（不滚动）→ 金光慢速脉冲 → 金币缓慢漂浮]
+
+高光触发：每 8–10 秒，持续 0.5–1.0 秒短暂金光闪耀或金币弹跳。
+温暖庆祝氛围，无缝循环，数字清晰可读，小幅动态。
+```
+
+**Seedance 2.0 模板：**
+```
+@图片1的[结算弹窗主体核心特征]，娱乐游戏 Free Game 结算弹窗待机动效，固定镜头，无缝循环，[风格质感]，温暖庆祝氛围。
 
 【奖励主体】描述主奖励元素的轻柔持续动作。
 
@@ -685,14 +723,9 @@ Maintain visual consistency, no distortion, high detail, seamless loop (if appli
 
 【粒子动效】描述金币缓慢漂浮或宝石轻柔闪烁。
 
----
+【高光触发】每 8–10 秒，持续 0.5–1.0 秒：描述短暂金光闪耀或金币弹跳增强效果。
 
-【高光触发】每 8–10 秒，持续 0.5–1.0 秒：
-描述短暂金光闪耀或金币弹跳增强效果。
-
----
-
-温暖庆祝氛围，无缝循环，数字清晰可读。动效强度：小。
+Maintain visual consistency, no distortion, seamless loop, Gentle motion, smooth pacing.
 ```
 
 
@@ -700,9 +733,19 @@ Maintain visual consistency, no distortion, high detail, seamless loop (if appli
 
 ### Template C: Loading Screen Animation
 
-**中文模板：**
+**Vidu Q2 模板：**
 ```
-娱乐游戏加载页开场动效，固定镜头，[单次播放 / 循环播放]。
+娱乐游戏加载页开场动效，固定镜头，[单次播放 / 循环播放]，[中等动态 / 小幅动态]。
+
+[连贯叙述：背景渐亮过渡 → 主体入场或持续动作 → Logo 出现与强调 → 整体光效氛围]
+
+单次模式：有清晰开始与结束感，时长 3–5 秒，中等动态。
+循环模式：无缝循环，无明显重启点，氛围轻柔，小幅动态。
+```
+
+**Seedance 2.0 模板：**
+```
+@图片1的[加载页主体核心特征]，娱乐游戏加载页开场动效，固定镜头，[单次播放 / 循环播放]，[风格质感]，[节奏氛围]。
 
 【背景动效】描述背景从暗到亮的渐进过渡或氛围持续动效。
 
@@ -712,11 +755,9 @@ Maintain visual consistency, no distortion, high detail, seamless loop (if appli
 
 【氛围动效】描述整体光效与能量氛围。
 
----
-
-【单次模式约束】有清晰的开始与结束感，时长 3–5 秒。
-【循环模式约束】无缝循环，无明显重启点，氛围轻柔可持续。
-动效强度：[单次：中 / 循环：小]。
+单次模式：有清晰的开始与结束感，时长 3–5 秒。
+循环模式：无缝循环，无明显重启点，氛围轻柔可持续。
+Maintain visual consistency, no distortion, [Moderate/Gentle] motion, smooth pacing.
 ```
 
 
@@ -753,6 +794,7 @@ For every generation, output **all selected tool versions** in the following for
 - All output prompts must be in **Chinese only**
 - **Vidu Q2 提示词规则：** 使用连贯口语化叙述，不使用`【】`分段标签；动态词使用官方中文触发词（小幅动态/中等动态/大动态）；关键氛围词在提示词中重复出现2次以上以强化效果
 - **Vidu Q2 首尾帧模式专用：** 必须使用`首帧 / 中间帧 / 尾帧`三段结构输出，不得使用其他格式
+- **Seedance 2.0 提示词规则：** 所有 Seedance 输出必须以`@图片1的[主体核心特征]，`开头（必选项）；意图[D]双图场景需同时标注`@图片1`和`@图片2`；不得遗漏@标记
 - Always perform Style Detection (S1–S9) before generating prompts; incorporate the matched style motion vocabulary naturally into subject action and atmosphere descriptions
 - **NEVER skip or auto-fill any configuration step**, even if the user's message contains partial information. Always surface unconfirmed steps explicitly before generating output.
 - **NEVER interpret "automatically analyze" as permission to bypass user confirmation steps.** Automatic analysis applies only to image content (subject detection, layer decomposition, style detection) — not to configuration selections.
