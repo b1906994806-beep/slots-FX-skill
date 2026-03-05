@@ -499,27 +499,12 @@ Describe ALL applicable items from the following:
 ```
 @图片1的[主体核心特征一句话描述]，娱乐游戏数字转轴符号动效，固定镜头，[风格质感]，[节奏氛围]。
 
-【主体动作 — 必须明确描述具体部位动作】
-按主体专项动作规则逐部位描述，禁止仅使用"向前冲"等模糊表达，
-必须指定：哪个部位 / 做了什么动作 / 以什么顺序发生。
+[连贯描述主体动效：按主体专项规则描述核心部位动作及带动关系，融入氛围变化与粒子效果，控制在 3–5 句。
+必须明确：哪个部位 / 做了什么 / 带动什么跟随 / 氛围如何变化。禁止使用模糊表达。]
+[高光触发（仅待机态）：每 8–10 秒，描述短暂增强效果（0.5–1.0 秒），随后 settles into stillness 回归平静。]
 
-【氛围动效】描述背景能量、光晕或光效变化。
-
-【粒子动效】描述粒子效果（金币 / 宝石 / 火花 / 闪电）。
-
-【UI / 标题动效】描述文字或边框动效（如有）。
-
----
-
-【高光触发 — 仅待机态】每 8–10 秒触发一次：
-描述短暂增强脉冲（0.5–1.0 秒）。
-
----
-
-保持主体外形、纹理、色彩一致，无变形。
-待机态中等动态，中奖态大动态，流畅节奏，待机态无缝循环。
-避免快速闪烁、剧烈运动、镜头移动或朝向改变。
-Maintain visual consistency, no distortion, high detail, seamless loop (if applicable), [Subtle/Moderate/Dynamic] motion, smooth pacing.
+保持主体外形、纹理、色彩一致，无变形。[中等动态 / 小幅动态]，待机态无缝循环。
+Maintain visual consistency, no distortion, seamless loop, [Subtle/Moderate/Dynamic] motion, smooth pacing.
 ```
 
 **Seedance 叙事版 [可选]:**
@@ -569,23 +554,15 @@ Vidu Q2 使用官方首帧/中间帧/尾帧结构；Seedance 2.0 使用分段标
 ```
 @图片1的[主体核心特征一句话描述]，娱乐游戏数字转轴符号动效，固定镜头，[风格质感]，[节奏氛围]。
 
-【起始状态】@图片1中主体的静止状态——姿势、表情、眼睛状态、嘴部状态、身体位置、能量层级。
-
-【动效弧线】描述运动过程：
-- 触发时机：什么动作启动了动效
-- 动作序列：按主体专项动作规则逐部位描述
-  （依次指定：下颌 / 眼睛 / 耳朵 / 颈部 / 四肢等具体动作）
-- 能量递进：氛围、粒子、光效的变化过程
-- 高潮时刻：描述能量最强的峰值状态
-
-【结束状态】
-- 意图 [A] 让它动起来：AI 自行决定结束状态，描述动效自然收束方式。
-- 意图 [B] 还原这一刻：主体回到@图片1的静止状态，能量收束，粒子消散。
-- 意图 [C] 回到原位：主体运动后回到与@图片1相同的状态（无缝循环）。
-- 意图 [D] 从A到B：主体从@图片1状态运动至@图片2状态，描述最终稳定姿态。
+[连贯描述完整动效弧线：从主体初始静止状态出发，描述动作触发、核心部位运动序列（明确带动关系）、能量递进过程、峰值状态，控制在 3–6 句。]
+[结束状态一句话：
+- 意图[A]：动效自然收束方式
+- 意图[B]：主体回到@图片1静止状态，能量收束
+- 意图[C]：运动后回到与@图片1相同状态，无缝循环
+- 意图[D]：主体稳定在@图片2的最终姿态]
 
 保持主体外形与表面细节一致，无变形。[小幅动态 / 中等动态 / 大动态]
-Maintain visual consistency, no distortion, high detail, seamless loop (if applicable), [Subtle/Moderate/Dynamic] motion, smooth pacing.
+Maintain visual consistency, no distortion, seamless loop (if applicable), [Subtle/Moderate/Dynamic] motion, smooth pacing.
 ```
 
 
@@ -606,17 +583,7 @@ Maintain visual consistency, no distortion, high detail, seamless loop (if appli
 ```
 @图片1的[弹窗主体核心特征]，娱乐游戏 Free Game 触发弹窗入场动效，固定镜头，[风格质感]，大动态。
 
-【面板入场】描述弹窗框体出现方式（缩放弹入 / 滑入 / 带缓动淡入）。
-
-【主体动效】描述奖励主体入场动作与表情变化。
-
-【氛围动效】描述背景光效与能量积蓄过程。
-
-【粒子动效】描述金币 / 星光 / 火花等入场粒子效果。
-
-【标题动效】描述标题文字出现动画。
-
-【强化效果】描述入场完成时的爆发或金光效果。
+[连贯描述入场过程：面板以缓动方式出现 → 主体入场动作与表情 → 背景光效积蓄 → 粒子效果 → 标题出现 → 入场完成爆发，控制在 4–6 句。]
 
 带缓动的流畅入场，面板边界清晰，文字可读，避免突然出现或硬边缘。
 Maintain visual consistency, no distortion, Bold motion, smooth pacing.
@@ -641,13 +608,8 @@ Maintain visual consistency, no distortion, Bold motion, smooth pacing.
 ```
 @图片1的[弹窗主体核心特征]，娱乐游戏 Free Game 触发弹窗待机动效，固定镜头，无缝循环，[风格质感]，轻柔持续。
 
-【主体动效】描述奖励主体的轻柔持续动作。
-
-【氛围动效】描述面板边框慢速光晕脉冲与背景能量。
-
-【粒子动效】描述金币 / 宝石缓慢漂浮的粒子效果。
-
-【高光触发】每 8–10 秒，持续 0.5–1.0 秒：描述短暂增强的光晕或粒子脉冲。
+[连贯描述待机循环：主体轻柔持续动作 + 面板边框光晕脉冲 + 粒子缓慢漂浮，控制在 2–3 句。]
+每 8–10 秒短暂增强光晕或粒子脉冲 0.5–1 秒，随后 settles into stillness 回归平静，无缝循环。
 
 Maintain visual consistency, no distortion, seamless loop, Gentle motion, smooth pacing.
 ```
@@ -671,16 +633,8 @@ Maintain visual consistency, no distortion, seamless loop, Gentle motion, smooth
 ```
 @图片1的[转场核心视觉元素描述]，娱乐游戏场景转场动效，平滑沉浸式过渡，[风格质感]，大动态。
 
-【能量动效】描述能量波或光圈的扩散方式。
-
-【光线动效】描述光束或扫光穿越画面的方式。
-
-【粒子动效】描述转场过程中的星光或火花轨迹。
-
-【场景过渡】描述画面切换在能量峰值时刻发生的方式。
-
-【通用转场（如已选择）】@图片1的 Scatter 图标出现在画面中心作为视觉锚点，
-能量从图标向外辐射，光圈扩散，转场发生在扩散峰值时刻。
+[连贯描述转场过程：能量波/光圈从中心扩散 → 光束扫过画面 → 粒子轨迹 → 画面在能量峰值时切换，控制在 3–4 句。]
+[通用转场（如已选）：@图片1的 Scatter 图标出现画面中心，能量向外辐射，光圈扩散至全屏，转场发生在扩散峰值。]
 
 无缝空间感，无硬切，转场时长 1.5–3 秒。
 Maintain visual consistency, Sweeping motion, smooth immersive pacing.
@@ -704,19 +658,7 @@ Maintain visual consistency, Sweeping motion, smooth immersive pacing.
 ```
 @图片1的[结算弹窗主体核心特征]，娱乐游戏 Free Game 结算弹窗入场动效，固定镜头，[风格质感]，大动态。
 
-【面板入场】描述弹窗框体伴随能量扩散的出现方式。
-
-【奖励主体】描述主奖励元素（宝箱 / 金币堆 / 图标）的入场动作。
-
-【数字动效】描述奖励金额数字向上滚动的动画。
-
-【氛围动效】描述金光与能量充满画面的过程。
-
-【粒子动效】描述金币喷射或粒子爆发效果。
-
-【标题动效】描述胜利文字出现与发光扫过的动画。
-
-【强化效果】描述入场完成时的高潮爆发效果。
+[连贯描述入场过程：面板伴随能量扩散出现 → 奖励主体入场 → 数字向上滚动 → 金光充满画面 → 金币爆发 → 胜利文字出现 → 高潮爆发，控制在 4–6 句。]
 
 庆祝感强烈但节奏有序，数字清晰可读，避免混乱。
 Maintain visual consistency, no distortion, Bold motion, smooth pacing.
@@ -741,15 +683,8 @@ Maintain visual consistency, no distortion, Bold motion, smooth pacing.
 ```
 @图片1的[结算弹窗主体核心特征]，娱乐游戏 Free Game 结算弹窗待机动效，固定镜头，无缝循环，[风格质感]，温暖庆祝氛围。
 
-【奖励主体】描述主奖励元素的轻柔持续动作。
-
-【数字动效】描述数字柔和发光或微光闪烁（不滚动，仅光效）。
-
-【氛围动效】描述金光慢速脉冲与环境能量。
-
-【粒子动效】描述金币缓慢漂浮或宝石轻柔闪烁。
-
-【高光触发】每 8–10 秒，持续 0.5–1.0 秒：描述短暂金光闪耀或金币弹跳增强效果。
+[连贯描述待机循环：奖励主体轻柔持续动作 + 数字柔和发光（不滚动）+ 金光慢速脉冲 + 金币缓慢漂浮，控制在 2–3 句。]
+每 8–10 秒短暂金光闪耀或金币弹跳增强 0.5–1 秒，随后回归平静，无缝循环。
 
 Maintain visual consistency, no distortion, seamless loop, Gentle motion, smooth pacing.
 ```
@@ -773,16 +708,9 @@ Maintain visual consistency, no distortion, seamless loop, Gentle motion, smooth
 ```
 @图片1的[加载页主体核心特征]，娱乐游戏加载页开场动效，固定镜头，[单次播放 / 循环播放]，[风格质感]，[节奏氛围]。
 
-【背景动效】描述背景从暗到亮的渐进过渡或氛围持续动效。
+[连贯描述动效过程：背景渐亮 → 主体入场或持续动作 → Logo 出现与强调 → 整体光效氛围，控制在 3–4 句。]
 
-【主体动效】描述 [用户描述的主体元素] 的入场或持续动作。
-
-【Logo 动效】描述游戏 Logo 出现与强调动画。
-
-【氛围动效】描述整体光效与能量氛围。
-
-单次模式：有清晰的开始与结束感，时长 3–5 秒。
-循环模式：无缝循环，无明显重启点，氛围轻柔可持续。
+单次模式：有清晰开始与结束感，时长 3–5 秒。循环模式：无缝循环，无明显重启点。
 Maintain visual consistency, no distortion, [Moderate/Gentle] motion, smooth pacing.
 ```
 
@@ -820,7 +748,7 @@ For every generation, output **all selected tool versions** in the following for
 - All output prompts must be in **Chinese only**
 - **Vidu Q2 提示词规则：** 使用连贯口语化叙述，不使用`【】`分段标签；动态词使用官方中文触发词（小幅动态/中等动态/大动态）；关键氛围词在提示词中重复出现2次以上以强化效果
 - **Vidu Q2 首尾帧模式专用：** 必须使用`首帧 / 中间帧 / 尾帧`三段结构输出，不得使用其他格式
-- **Seedance 2.0 提示词规则：** 所有 Seedance 输出必须以`@图片1的[主体核心特征]，`开头（必选项）；意图[D]双图场景需同时标注`@图片1`和`@图片2`；不得遗漏@标记
+- **Seedance 2.0 提示词规则：** 所有 Seedance 输出必须以`@图片1的[主体核心特征]，`开头（必选项）；意图[D]双图场景需同时标注`@图片1`和`@图片2`；不得遗漏@标记；使用连贯叙述，不使用`【】`分段标签；控制在 5–10 行，避免冗余修饰词
 - Always perform Style Detection (S1–S9) before generating prompts; incorporate the matched style motion vocabulary naturally into subject action and atmosphere descriptions
 - **NEVER skip or auto-fill any configuration step**, even if the user's message contains partial information. Always surface unconfirmed steps explicitly before generating output.
 - **NEVER interpret "automatically analyze" as permission to bypass user confirmation steps.** Automatic analysis applies only to image content (subject detection, layer decomposition, style detection) — not to configuration selections.
