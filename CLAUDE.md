@@ -5,7 +5,7 @@
 本项目基于 BMAD 框架，开发一套 **Slots 游戏动效 AI 提示词生成 Skill**。
 用户上传静态图片，Skill 自动分析图像内容并生成适用于 AI 视频工具的动效提示词。
 
-**目标工具：** Vidu Q2 + Seedance 2.0（双工具双语同时输出）
+**目标工具：** Vidu Q2 + Seedance 2.0（双工具中文单语输出）
 
 ---
 
@@ -13,11 +13,8 @@
 
 | 文件 | 说明 |
 |------|------|
-| `C:\Users\admin\Downloads\slots_animation_prompt_skill_v1_claude.md` | **主 Skill 文件**（当前最新版本，优先读取此文件） |
-| `C:\Users\admin\Downloads\lobby_icon_animation_skill_v3_claude.md` | 参考基线：Lobby 大厅图标动效 Skill（已验证） |
-| `C:\_bmad-output\brainstorming\brainstorming-session-2026-03-04.md` | 完整设计文档（头脑风暴成果，包含所有设计决策） |
-
-> 读取路径：`C:\Users\admin\Claude code test\bmad-workspace\_bmad-output\brainstorming\brainstorming-session-2026-03-04.md`
+| `slots_animation_prompt_skill_v1_claude.md` | **主 Skill 文件**（仓库根目录，当前最新版本） |
+| `brainstorming/` | 历次头脑风暴设计记录 |
 
 ---
 
@@ -40,7 +37,7 @@ C. 加载页开场动画
 
 1. **输入**：用户只上传一张静态图片，无需额外描述（加载页场景需简述主体）
 2. **首尾帧模式**：所有场景统一上传一张图 → Skill 询问首帧或尾帧
-3. **输出**：每次同时生成 Vidu Q2 + Seedance 2.0 两套，中英双语共四个版本
+3. **输出**：每次同时生成 Vidu Q2 + Seedance 2.0 两套，中文单语两套版本（Vidu Q2 + Seedance 2.0）
 4. **强度体系**：三级强度映射（一级=Small/Subtle，二级=Medium/Moderate，三级=Large/Dynamic）
 5. **主体动作规则**：必须按「主体专项动作规则库」逐部位描述，禁止使用模糊表达
 6. **合规过滤**：所有输出前必须过滤禁用词，使用中性替换词

@@ -6,7 +6,7 @@ AI 视频工具提示词生成 Skill，用于 Slots 游戏动效素材制作。
 
 用户上传静态图片，Skill 自动分析图像内容并生成适用于 AI 视频工具的动效提示词。
 
-**输出工具：** Vidu Q2 + Seedance 2.0（双工具中文输出）
+**输出工具：** Vidu Q2 + Seedance 2.0（双工具中文单语输出）
 
 ---
 
@@ -19,7 +19,8 @@ slots-FX-skill/
 ├── AGENTS.md                                   # Codex Agent 工作指南
 └── brainstorming/
     ├── brainstorming-session-2026-03-04.md     # 初版设计头脑风暴
-    └── brainstorming-session-2026-03-05.md     # v1 优化头脑风暴
+    ├── brainstorming-session-2026-03-05.md     # v1 优化头脑风暴
+    └── brainstorming-session-2026-03-06.md     # v1 优化16 头脑风暴（UI Layer + 单层素材模板）
 ```
 
 ---
@@ -38,15 +39,16 @@ slots-FX-skill/
 
 1. **流程强制确认** — 所有配置步骤必须逐步确认，禁止跳步或自动填充
 2. **首尾帧意图优先** — 用户先选动效意图，再指导上传图片
-3. **双工具独立优化** — Vidu Q2 保留结构化标签，Seedance 2.0 支持自然叙事版
-4. **风格感知动效** — 识别 S1–S9 美术风格，融入对应运动词汇
-5. **语境锚定合规** — Seedance 版开头加语境声明，应对 LLM 全文过滤
+3. **素材类型识别** — 上传图片后先判断素材类型（完整图标/纯主体/纯文字/纯背景），路由至对应模板
+4. **双工具中文单语** — Vidu Q2 与 Seedance 2.0 各输出一套中文提示词
+5. **风格感知动效** — 识别 S1–S9 美术风格，融入对应运动词汇
+6. **语境锚定合规** — Seedance 版开头加 @图片1 引用，应对 LLM 全文过滤
 
 ---
 
 ## 当前版本
 
-**v1 优化15**（2026-03-05）
+**v1 优化16**（2026-03-06）
 
 | 版本 | 优化内容 |
 |------|---------|
@@ -66,3 +68,4 @@ slots-FX-skill/
 | v1 优化13 | Seedance 全模板补充 @图片1 引用，B/C 模板拆分独立版本 |
 | v1 优化14 | 新增 TRIGGER CONDITIONS 自动触发章节 |
 | v1 优化15 | Seedance 全模板简洁化，去除【】标签，连贯叙述格式 |
+| v1 优化16 | 新增 UI Layer 文字动效规则体系；INTENSITY MAPPING 扩展 UI Layer 列；新增 STEP 3A-3b 素材类型识别节点；新增 Template S / T / BG 单层素材专属模板 |
