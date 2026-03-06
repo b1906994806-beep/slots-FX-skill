@@ -40,13 +40,16 @@ Output: Dual-tool (Vidu Q2 + Seedance 2.0) × Chinese prompts simultaneously.
 3. **STEP 2** — Scene type selected
 4. **STEP 3A-1** — Icon type selected (if Scene A)
 5. **STEP 3A-2** — Animation state selected (if Scene A)
-6. **STEP 3B-1** — Popup/Transition stage selected (if Scene B)
-7. **STEP 3B-2** — Transition design selected if stage [3] or [6] (if Scene B)
-8. **STEP 3C-1** — Playback mode selected (if Scene C)
+6. **STEP 3A-3b** — Asset type detected and confirmed (Complete Icon / Subject Only / Text Only / Background Only)
+7. **STEP 3B-1** — Popup/Transition stage selected (if Scene B)
+8. **STEP 3B-2** — Transition design selected if stage [3] or [6] (if Scene B)
+9. **STEP 3C-1** — Playback mode selected (if Scene C)
 
 ⚠️ **If the user's message already contains partial information** (e.g. mentions "待机动效" or "图标"), acknowledge it, then **still ask for all unconfirmed steps** before generating. Do NOT auto-fill missing selections.
 
 ✅ **Image upload** may happen at any point — but analysis only begins after all configuration steps are confirmed.
+
+✅ **Single-layer asset routing:** If asset type is NOT a complete icon, skip to the corresponding template (Template S / T / BG) immediately after STEP 3A-3b confirmation. Do NOT proceed with full layer decomposition.
 
 ---
 
@@ -127,6 +130,21 @@ Display available states based on icon type selected:
 > No additional description required. AI will automatically analyze the visual structure.
 
 **首尾帧模式下：** 上传说明已在 STEP 1.2 中确认，按意图 [A/B/C/D] 上传对应数量图片。
+
+### 3A-3b Asset Type Detection（素材类型识别）
+
+🛑 **图片上传后，必须先判断素材类型，再进入视觉识别。禁止跳过此步骤。**
+
+AI 自动识别上传图片属于以下哪种类型，并告知用户确认：
+
+| 类型 | 识别特征 | 后续流程 |
+|------|---------|---------|
+| **完整图标**（主体 + 文字） | 画面同时包含主体图像和标题文字 | 继续 3A-4 → 生成完整提示词（主体 + 文字联动） |
+| **纯主体**（Subject Only） | 只有动物/角色/道具等主体，无文字无背景 | 跳转 Template S 流程 |
+| **纯文字**（Text Only） | 只有标题文字（如 WILD / BONUS），无主体 | 跳转 Template T 流程 |
+| **纯背景**（Background Only） | 只有背景光效/粒子/环境元素，无主体无文字 | 跳转 Template BG 流程（仅适用于 Scene B/C） |
+
+> 若 AI 无法确定素材类型，询问用户：「请问你上传的图片是完整图标、纯主体、纯文字，还是纯背景素材？」
 
 ### 3A-4 Automatic Visual Recognition
 
@@ -336,6 +354,97 @@ Describe ALL applicable items from the following:
 
 ---
 
+### UI Layer Motion Rules (Title / Text Elements)
+
+#### Subject-Text Linkage Timing（主体-文字联动时序）
+
+**Default Rule:** Subject animates first → Text follows after 0.1–0.2s delay.
+
+**Exception — Scatter Anticipation only:** Text flickers first as a pre-signal → Subject begins shaking afterward.
+
+**Causal Chain Adaptation（因果链改编，平移自主体规则）：**
+- Subject outer frame expands → Title border glow follows and bursts outward
+- Subject brightness surges dim → peak → Title brightness follows same arc
+- Subject energy particles burst → Title particles trail from text edges with slight delay
+
+#### UI Layer Intensity Rules（文字层强度规则）
+
+文字动效强度**永远低于主体一档**，防止两层抢戏：
+
+| 状态 | 主体强度 | 文字层强度 | 文字层 Vidu 词 | 文字层 Seedance 词 |
+|---|---|---|---|---|
+| Low-tier Win | 小幅动态 | 无文字动效 | — | — |
+| High-tier Win | 中等动态 | 小幅动态 | 小幅动态 | Subtle sweep |
+| Level 3 Win | 大动态 | 中等动态 | 中等动态 | Moderate / Energetic |
+| Level 3 Idle | 中等动态 | 小幅动态 | 小幅动态 | Gentle / Continuous |
+| Level 3 Land | 中等动态 | 小幅动态 | 小幅动态 | Subtle burst |
+| Scatter Anticipation | — | 小幅动态（先行） | 小幅动态 | Subtle anticipatory flicker |
+
+#### UI Layer Motion by Icon Type（按图标类型推荐文字动效）
+
+**Land 定义：** 落定动效不是位移下落，而是符号停稳时的短促能量爆发（0.3–0.5s），强调玩家注意。
+
+**Wild 图标：**
+
+| 状态 | 推荐文字动效 | 联动时序 |
+|---|---|---|
+| Idle | 呼吸发光 + 微扫光（2–3s周期） | 与主体浮动同步 |
+| Land | 描边短促闪光 + 轻微弹跳回弹（小爆发） | 主体能量闪后同步 |
+| Win | 弹出回弹 + 粒子火花 + 扫光 | 主体爆发→文字弹出→粒子扩散 |
+
+**Scatter 图标：**
+
+| 状态 | 推荐文字动效 | 联动时序 |
+|---|---|---|
+| Idle | 呼吸发光 + 星光点闪（神秘感） | 与主体同步 |
+| Land | 描边短促闪光 + 小爆发 | 主体能量闪后同步 |
+| Win | 弹出回弹 + 能量环绕 + 粒子爆发 | 主体爆发→文字弹出→环绕扩散 |
+| Anticipation | 文字先闪烁（预告信号） | 文字领先主体（唯一反转时序场景） |
+
+**Bonus 图标：**
+
+| 状态 | 推荐文字动效 | 联动时序 |
+|---|---|---|
+| Idle | 呼吸发光 + 偶发星光粒子 | 与主体同步 |
+| Land | 描边短促闪光 + 小爆发 | 主体能量闪后同步 |
+| Win | 弹出回弹 + 金色粒子火花 + 扫光 | 主体爆发→文字弹出→粒子散开 |
+
+**Low-tier / High-tier 图标：**
+
+| 图标类型 | 状态 | 推荐文字动效 | 联动时序 |
+|---|---|---|---|
+| Low-tier | Win | 无文字动效 | — |
+| High-tier | Win | 扫光 + 轻微弹出回弹 | 主体能量环扩散时文字弹出 |
+
+#### UI Layer Text Animation Types（10种文字动效词汇库）
+
+生成提示词时从以下类型中按场景选配，禁止同时叠加超过3种：
+
+| 类型 | 描述 | 适配场景 |
+|---|---|---|
+| 弹出回弹（Pop/Bounce） | 放大至120%→回弹至100%，0.3–0.5s | BONUS / FREE SPINS Win |
+| 金色扫光（Gold Shine） | 高光条从左至右扫过，周期2–3s | JACKPOT / GRAND / High-tier Win |
+| 呼吸发光（Glow Pulse） | 外发光缓慢增强→减弱，周期2s | WILD / BONUS Idle |
+| 闪烁高亮（Flicker） | 亮度随机闪烁，配合星光点闪 | SCATTER Idle / Anticipation |
+| 粒子火花（Spark/Burst） | 金色粒子从文字边缘爆开散开 | BONUS / SCATTER Win |
+| 金币掉落（Coin Rain） | 文字周围不时掉落金币/宝石（点缀型） | JACKPOT Win |
+| 轻微浮动（Gentle Float） | 整体上下浮动约2px，周期2–4s | 卡通风格符号 Idle |
+| 形变（Squash & Stretch） | 轻微压扁再恢复，幅度极小 | 卡通/动物主题 Land |
+| 能量环绕（Energy Orbit） | 光环/电流围绕文字旋转 | MAGIC WILD / POWER BONUS |
+| 渐变流动（Gradient Flow） | 文字内颜色渐变缓慢流动 | JACKPOT / 高端稀有符号 |
+
+> 核心极简公式（推荐默认组合）：金属渐变 + 扫光 + 呼吸发光
+
+#### UI Layer Hard Restrictions（文字动效硬性约束）
+- 文字缩放幅度不超过 110–120%
+- 各效果层（呼吸/扫光/粒子）必须错开触发节奏，禁止同时循环
+- 循环周期不低于 2 秒
+- 文字动效强度比主体低一档
+- 禁止文字遮挡主体核心部位
+- 文字字形、字色任何时候保持清晰可读，不因动效失真
+
+---
+
 ### Popup Motion Rules
 
 #### Trigger Popup — Entry
@@ -439,19 +548,21 @@ Describe ALL applicable items from the following:
 ## INTENSITY MAPPING
 
 > Vidu Q2 使用官方中文触发词；Seedance 使用语言描述词。
+> UI Layer 文字动效强度**永远低于主体一档**。
 
-| Level | Icon Type | Vidu Q2 动态词 | Seedance Keywords |
-|-------|-----------|----------------|-------------------|
-| Level 1 | Low-tier (Win) | 小幅动态 | Subtle / Gentle / Minimal |
-| Level 2 | High-tier (Win) | 中等动态 | Moderate / Smooth / Controlled |
-| Level 3 Win | Special (Wild/Scatter/Bonus) | 大动态 | Dynamic / Energetic / Expressive |
-| Level 3 Idle | Special (Wild/Scatter/Bonus) | 中等动态 | Gentle / Continuous / Soft |
-| Level 3 Land | Special (Wild/Scatter/Bonus) | 中等动态 | Moderate / Impactful / Snappy |
-| Popup Entry | — | 大动态 | Bold / Dramatic / Impactful |
-| Popup Idle | — | 小幅动态 | Gentle / Continuous / Soft |
-| Transition | — | 大动态 | Sweeping / Immersive / Fluid |
-| Loading One-shot | — | 中等动态 | Progressive / Clear / Cinematic |
-| Loading Loop | — | 小幅动态 | Ambient / Seamless / Breathable |
+| Level | Icon Type | 主体 Vidu Q2 | 主体 Seedance | UI Layer Vidu | UI Layer Seedance |
+|-------|-----------|-------------|--------------|---------------|-------------------|
+| Level 1 | Low-tier (Win) | 小幅动态 | Subtle / Gentle / Minimal | — | — |
+| Level 2 | High-tier (Win) | 中等动态 | Moderate / Smooth / Controlled | 小幅动态 | Subtle sweep |
+| Level 3 Win | Special (Wild/Scatter/Bonus) | 大动态 | Dynamic / Energetic / Expressive | 中等动态 | Moderate / Energetic |
+| Level 3 Idle | Special (Wild/Scatter/Bonus) | 中等动态 | Gentle / Continuous / Soft | 小幅动态 | Gentle / Continuous |
+| Level 3 Land | Special (Wild/Scatter/Bonus) | 中等动态 | Moderate / Impactful / Snappy | 小幅动态 | Subtle burst |
+| Scatter Anticipation | Scatter only | — | — | 小幅动态 | Subtle anticipatory flicker |
+| Popup Entry | — | 大动态 | Bold / Dramatic / Impactful | — | — |
+| Popup Idle | — | 小幅动态 | Gentle / Continuous / Soft | — | — |
+| Transition | — | 大动态 | Sweeping / Immersive / Fluid | — | — |
+| Loading One-shot | — | 中等动态 | Progressive / Clear / Cinematic | — | — |
+| Loading Loop | — | 小幅动态 | Ambient / Seamless / Breathable | — | — |
 
 ---
 
@@ -714,6 +825,86 @@ Maintain visual consistency, no distortion, seamless loop, Gentle motion, smooth
 Maintain visual consistency, no distortion, [Moderate/Gentle] motion, smooth pacing.
 ```
 
+
+---
+
+### Template S: Subject Only（纯主体素材）
+
+> 用于用户上传纯主体图片（无文字、无背景）的场景，跳过 UI Layer 描述。
+
+**Vidu Q2 模板：**
+```
+娱乐游戏数字转轴符号主体动效，固定镜头。
+
+[按主体专项动作规则，明确"X带动Y，Y延迟跟随Z"的因果链逐部位描述。
+必须指定：哪个部位 / 做了什么 / 带动了什么跟随运动。
+在叙述中自然融入氛围词，并在描述末尾再次重复强化1-2个核心氛围词。]
+
+固定镜头，保持主体外形纹理色彩一致，无变形。[小幅动态 / 中等动态 / 大动态]
+```
+
+**Seedance 2.0 模板：**
+```
+@图片1的[主体核心特征一句话描述]，娱乐游戏数字转轴符号主体动效，固定镜头，[风格质感]，[节奏氛围]。
+
+[连贯描述主体动效：按主体专项规则描述核心部位动作及带动关系，融入氛围变化与粒子效果，控制在 3–5 句。
+必须明确：哪个部位 / 做了什么 / 带动什么跟随 / 氛围如何变化。禁止使用模糊表达。]
+
+保持主体外形、纹理、色彩一致，无变形。[Subtle/Moderate/Dynamic] motion, smooth pacing.
+```
+
+---
+
+### Template T: Text Only（纯文字素材）
+
+> 用于用户上传纯文字/标题图片（如仅含 WILD / BONUS 字样）的场景，无主体动效。
+
+**Vidu Q2 模板：**
+```
+娱乐游戏数字转轴文字标题动效，固定镜头。
+
+[连贯叙述文字动效：从初始光效状态出发，描述选配的动效类型（弹出/扫光/呼吸发光/粒子等）、光效层次与节奏。
+各效果层错开触发，禁止同时叠加超过3种效果。
+在描述末尾重复强化1–2个核心氛围词。]
+
+文字清晰可读，字形无变形，[小幅动态 / 中等动态]
+```
+
+**Seedance 2.0 模板：**
+```
+@图片1的[文字核心特征：字体/颜色/描边]，娱乐游戏数字转轴文字标题动效，固定镜头，[风格质感]。
+
+[连贯描述文字动效过程：光效层次、选配动效节奏（弹出/扫光/呼吸/粒子等）、氛围变化，控制在 3–4 句。
+各效果层错开触发节奏，禁止同时循环。]
+
+保持字形清晰可读，字色一致，无失真，seamless loop（如为待机态）。[Subtle/Gentle] motion, smooth pacing.
+```
+
+---
+
+### Template BG: Background Only（纯背景素材）
+
+> 用于用户上传纯背景图片的场景，主要适用于 Scene B（弹窗）和 Scene C（加载页）的背景层素材。
+
+**Vidu Q2 模板：**
+```
+娱乐游戏[弹窗背景 / 加载页背景]动效，固定镜头，[小幅动态 / 中等动态]。
+
+[连贯叙述背景动效：大气粒子漂浮节奏 / 背景光效流动 / 环境色彩渐变 / 光晕脉冲周期。
+各背景层错开节奏，营造层次感。]
+
+无明显重启点，无缝循环，背景元素保持稳定不突变。[小幅动态 / 中等动态]
+```
+
+**Seedance 2.0 模板：**
+```
+@图片1的[背景核心视觉特征]，娱乐游戏[弹窗背景 / 加载页背景]动效，固定镜头，[风格质感]，轻柔大气。
+
+[连贯描述背景动效：粒子漂浮节奏 + 光效脉冲周期 + 色彩氛围渐变，控制在 3–4 句。
+各层错开触发节奏，形成自然层次感。]
+
+背景元素保持稳定，无突变，seamless loop, [Gentle/Ambient] motion, smooth pacing.
+```
 
 ---
 
