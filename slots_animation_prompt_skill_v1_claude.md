@@ -1079,7 +1079,7 @@ For every generation, output **all selected tool versions** in the following for
 - **The output template structure must remain unchanged**
 - All output prompts must be in **Chinese only**
 - **Vidu Q2 提示词规则：** 使用连贯口语化叙述，不使用`【】`分段标签；动态词使用官方中文触发词（小幅动态/中等动态/大动态）；关键氛围词在提示词中重复出现2次以上以强化效果
-- **Vidu Q2 首尾帧模式专用：** 必须使用`首帧 / 中间帧 / 尾帧`三段结构输出，不得使用其他格式
+- **Vidu Q2 首尾帧模式专用（Scene A 图标动效）：** 必须使用`首帧 / 中间帧 / 尾帧`三段结构输出，不得使用其他格式。Scene B（弹窗/转场）和 Scene C（加载页）即使选择首尾帧模式，也使用连贯叙述格式（结构复杂不适用三段式），意图[D]双图场景在提示词中同时引用@图片1和@图片2描述起止状态即可。
 - **Seedance 2.0 提示词规则：** 所有 Seedance 输出必须以`@图片1的[主体核心特征]，`开头（必选项）；意图[D]双图场景需同时标注`@图片1`和`@图片2`；不得遗漏@标记；使用连贯叙述，不使用`【】`分段标签；控制在 5–10 行，避免冗余修饰词
 - Always perform Style Detection (S1–S9) before generating prompts; incorporate the matched style motion vocabulary naturally into subject action and atmosphere descriptions
 - **NEVER skip or auto-fill any configuration step**, even if the user's message contains partial information. Always surface unconfirmed steps explicitly before generating output.
