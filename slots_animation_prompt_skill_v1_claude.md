@@ -44,12 +44,15 @@ Output: Dual-tool (Vidu Q2 + Seedance 2.0) × Chinese prompts simultaneously.
 7. **STEP 3B-1** — Popup/Transition stage selected (if Scene B)
 8. **STEP 3B-2** — Transition design selected if stage [3] or [6] (if Scene B)
 9. **STEP 3C-1** — Playback mode selected (if Scene C)
+10. **STEP 4** — 方案预览已输出，用户已选定方案（或确认在某方案基础上微调）
 
 ⚠️ **If the user's message already contains partial information** (e.g. mentions "待机动效" or "图标"), acknowledge it, then **still ask for all unconfirmed steps** before generating. Do NOT auto-fill missing selections.
 
 ✅ **Image upload** may happen at any point — but analysis only begins after all configuration steps are confirmed.
 
 ✅ **Single-layer asset routing:** If asset type is NOT a complete icon, skip to the corresponding template (Template S / T / BG) immediately after STEP 3A-3b confirmation. Do NOT proceed with full layer decomposition.
+
+✅ **STEP 4 默认规则：** 用户未指定强度默认中；未指定预览形式默认半结构预览；可选补充缺失时自动推断，不追问。
 
 ---
 
@@ -584,6 +587,119 @@ Describe ALL applicable items from the following:
 | 777 | symbol combination / matching symbols |
 | gambling | gaming / entertainment |
 | money / cash | reward / treasure / energy |
+
+---
+
+## STEP 4: 方案预览（Pre-generation Scheme Preview）
+
+🛑 **所有 STEP 1–3 配置确认完成后，必须先经过此步骤，再生成完整提示词。**
+
+**目标：** 在生成完整提示词前，输出 2–3 个差异明确的候选方案预览，帮助用户快速锁定动效方向。
+
+---
+
+### 4-1 用户选择菜单
+
+向用户展示以下菜单，3项必选，补充项可选：
+
+**动效方向（必选）**
+- **[A]** 轻量待机
+- **[B]** 冲击爆发
+- **[C]** 元素表现
+- **[D]** 生物感
+- **[E]** 对抗演出
+- **[F]** 自定义关键词（用户自由描述，Skill 自动归类）
+
+**表现强度（必选）**
+- **[A]** 轻 — 适合常驻 UI，不抢画面
+- **[B]** 中 — 有明显演出感，适合大多数 Slots 图标
+- **[C]** 强 — 冲击更足，适合出现、触发、大奖感
+
+**预览形式（必选）**
+- **[A]** 一句话预览
+- **[B]** 半结构预览
+- **[C]** 详细预览
+
+**可选补充**
+> 主体（文字 / 动物 / 文字+动物）/ 类型（出现 / 待机 / 转场）/ 限制（不要缩放 / 不要位移 / 不要镜头 / 简单循环）/ 风格（写实 / 神兽 / 夸张 / 高级感 / 爆发型）
+
+---
+
+### 4-2 默认规则
+
+🛑 **Skill 不得因为用户未填写可选项而追问。规则如下：**
+
+- 用户未指定**表现强度** → 默认 **[B] 中**
+- 用户未指定**预览形式** → 默认 **[B] 半结构预览**
+- 用户未补充主体 / 类型 / 限制 / 风格 → **优先根据当前上下文自动推断，不主动追问**
+- **唯一例外**：主体信息缺失且会明显影响方案输出时，补问 **1 个** 最关键问题，不得追问更多
+
+---
+
+### 4-3 Skill 自动决定差异维度
+
+🛑 **差异维度由 Skill 根据当前动效状态自动匹配，不向用户暴露，不询问用户。**
+
+| 动效状态 | 自动差异维度（Skill 内部使用）|
+|---|---|
+| Idle 待机 | 轻呼吸型 / 能量循环型 / 生物感型 |
+| Land 落定 | 凝聚落定型 / 冲击扩散型 / 余波稳定型 |
+| Win 中奖 | 全力爆发型 / 层叠递进型 / 聚焦高亮型 |
+| Anticipation 期待抖动 | 张力蓄积型 / 微动预告型 / 能量凝聚型 |
+| Popup Entry 弹窗入场 | 凝聚生成型 / 冲击爆发型 / 扫出显现型 |
+| Popup Idle 弹窗待机 | 轻呼吸型 / 粒子漂浮型 / 光晕脉冲型 |
+| Transition 转场 | 光爆扫出型 / 粒子流滑型 / 能量牵引型 |
+| Loading One-shot | 环境唤醒型 / 主体入场型 / 光效掠过型 |
+| Loading Loop | 大气呼吸型 / 粒子循环型 / 光晕脉动型 |
+
+---
+
+### 4-4 方案预览输出规则
+
+- 根据用户选择（动效方向 + 强度）与当前动效状态，从对应差异维度中选取 **2–3 个**输出
+- 方案之间必须在**动作结构、节奏感或视觉重心**上有明显差异，**禁止同义换词**
+- 按用户选择的预览形式输出：
+
+**[A] 一句话预览格式：**
+```
+方案一：[方案名称] — [一句话描述核心动效]
+方案二：[方案名称] — [一句话描述核心动效]
+方案三：[方案名称] — [一句话描述核心动效]
+```
+
+**[B] 半结构预览格式：**
+```
+方案一：[方案名称]
+动作核心：[主体核心动作 1–2 句]
+光效节奏：[光效/粒子描述 1 句]
+整体感受：[一句话定性]
+
+方案二 / 方案三：同上结构
+```
+
+**[C] 详细预览格式：**
+```
+方案一：[方案名称]
+动作核心：[主体动作完整描述，含部位/节奏/因果链]
+光效节奏：[光效层次、粒子类型、触发时序]
+文字联动：[UI Layer 文字动效描述（如有）]
+整体感受：[风格定性]
+
+方案二 / 方案三：同上结构
+```
+
+---
+
+### 4-5 用户确认与流程跳转
+
+预览输出后：
+
+> **请选择方案，或告诉我在哪个方案基础上微调：**
+> [1] 方案一 [2] 方案二 [3] 方案三 [再来几个] [微调方案X]
+
+- 用户选定方案 → 以所选方案为基础，生成完整提示词
+- 用户要求"再来几个" → 基于相同配置重新生成 2–3 个新方案
+- 用户要求微调 → 在指定方案基础上调整后再次预览，确认后生成完整提示词
 
 ---
 
