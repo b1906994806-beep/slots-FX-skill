@@ -43,8 +43,10 @@ Output: Dual-tool (Vidu Q2 + Seedance 2.0) × Chinese prompts simultaneously.
 6. **STEP 3A-3b** — Asset type detected and confirmed (Complete Icon / Subject Only / Text Only / Background Only)
 7. **STEP 3B-1** — Popup/Transition stage selected (if Scene B)
 8. **STEP 3B-2** — Transition design selected if stage [3] or [6] (if Scene B)
-9. **STEP 3C-1** — Playback mode selected (if Scene C)
-10. **STEP 4** — 方案预览已输出，用户已选定方案（或确认在某方案基础上微调）
+9. **STEP 3B-3b** — Asset type detected and confirmed (Complete Popup / Background Only) (if Scene B)
+10. **STEP 3C-1** — Playback mode selected (if Scene C)
+11. **STEP 3C-2b** — Asset type detected and confirmed (Complete Loading Page / Background Only) (if Scene C)
+12. **STEP 4** — 方案预览已输出，用户已选定方案（或确认在某方案基础上微调）
 
 ⚠️ **If the user's message already contains partial information** (e.g. mentions "待机动效" or "图标"), acknowledge it, then **still ask for all unconfirmed steps** before generating. Do NOT auto-fill missing selections.
 
@@ -229,11 +231,22 @@ UI layer — Interface elements:
 - **Full Reference Mode:** Upload one image representing the popup/transition state
 - **First-Last Frame Mode:** 按 STEP 1.2 中确认的意图 [A/B/C/D] 上传对应数量图片。
 
+### 3B-3b Asset Type Detection（素材类型识别）
+
+🛑 **图片上传后，必须先判断素材类型，再进入后续生成。**
+
+| 类型 | 识别特征 | 后续流程 |
+|------|---------|---------|
+| **完整弹窗素材**（主体 + 面板 + 文字） | 包含弹窗面板、主体图像、标题文字等多层元素 | 继续现有 Scene B 生成流程 |
+| **纯背景**（Background Only） | 只有背景光效/粒子/环境，无面板无主体 | 跳转 Template BG 流程 |
+
+> 若 AI 无法确定，询问用户：「请问这是完整弹窗素材，还是纯背景层图片？」
+
 ---
 
 ## STEP 3C: Loading Screen Opening Animation Flow
 
-🛑 **STEP 2 确认场景 [C] 后方可进入。3C-1 → 3C-2 → 3C-3 必须按顺序逐步确认。**
+🛑 **STEP 2 确认场景 [C] 后方可进入。3C-1 → 3C-2 → 3C-2b → 3C-3 必须按顺序逐步确认。**
 
 ### 3C-1 Select Playback Mode
 
@@ -247,6 +260,17 @@ UI layer — Interface elements:
 
 - **Full Reference Mode:** Upload one loading screen image
 - **First-Last Frame Mode:** 按 STEP 1.2 中确认的意图 [A/B/C/D] 上传对应数量图片。
+
+### 3C-2b Asset Type Detection（素材类型识别）
+
+🛑 **图片上传后，必须先判断素材类型，再进入后续生成。**
+
+| 类型 | 识别特征 | 后续流程 |
+|------|---------|---------|
+| **完整加载页素材**（主体 + Logo + 背景） | 包含主体图像、游戏 Logo 及背景环境 | 继续 3C-3 描述主体 |
+| **纯背景**（Background Only） | 只有背景光效/粒子/环境，无主体无 Logo | 跳转 Template BG 流程（跳过 3C-3）|
+
+> 若 AI 无法确定，询问用户：「请问这是包含主体的完整加载页素材，还是纯背景层图片？」
 
 ### 3C-3 Describe Main Subject
 
