@@ -80,6 +80,7 @@ C. 加载页开场动画
 | v1 优化14 | 新增 TRIGGER CONDITIONS 章节：关键词触发（Vidu/Seedance/动效场景/游戏元素/意图表达）+ 图片上传触发，识别后自动进入 STEP 1 |
 | v1 优化15 | 对照 Seedance 2.0 官方手册简洁原则，全部 Seedance 模板去除【】分段标签，改为连贯叙述格式，控制在 5–10 行 |
 | v1 优化16 | 头脑风暴后新增 UI Layer 文字动效完整规则体系：①UI Layer Motion Rules（10种动效类型库、主体-文字联动时序、按图标类型推荐矩阵、硬性约束）；②INTENSITY MAPPING 新增 UI Layer 列（文字强度永远低主体一档）；③新增 STEP 3A-3b 素材类型识别节点；④新增 Template S（纯主体）/ Template T（纯文字）/ Template BG（纯背景）三个单层素材专属模板；⑤Template UI（交互按钮）记入待办 |
+| v1 优化17 | 新增 STEP 4 方案预览步骤：用户选动效方向(A-F)+强度+预览形式，Skill 自动决定差异维度（9组状态映射），输出 2-3 个候选方案，用户确认后再生成完整提示词；MANDATORY EXECUTION RULES 补充第10条 |
 
 ---
 
