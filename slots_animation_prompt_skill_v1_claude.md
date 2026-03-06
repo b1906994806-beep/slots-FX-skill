@@ -50,9 +50,11 @@ Output: Dual-tool (Vidu Q2 + Seedance 2.0) × Chinese prompts simultaneously.
 
 ✅ **Image upload** may happen at any point — but analysis only begins after all configuration steps are confirmed.
 
-✅ **Single-layer asset routing:** If asset type is NOT a complete icon, skip to the corresponding template (Template S / T / BG) immediately after STEP 3A-3b confirmation. Do NOT proceed with full layer decomposition.
+✅ **单层素材路由顺序：** STEP 3A-3b 确认素材类型后 → 仍需经过 STEP 4 方案预览 → 再路由至对应模板（Template S / T / BG）生成完整提示词。完整图标同理。
 
-✅ **STEP 4 默认规则：** 用户未指定强度默认中；未指定预览形式默认半结构预览；可选补充缺失时自动推断，不追问。
+✅ **Background Only 异常分支（Scene A）：** 若在 Scene A 流程中检测到纯背景素材，立即提示用户：「纯背景素材不适用于图标动效场景，请改选 Scene B（弹窗）或 Scene C（加载页），或重新上传包含主体的图片。」不得继续生成提示词。
+
+✅ **STEP 4 默认规则：** 动效方向为唯一必选项；强度默认中；预览形式默认半结构；可选补充缺失时自动推断，不追问。
 
 ---
 
@@ -145,7 +147,7 @@ AI 自动识别上传图片属于以下哪种类型，并告知用户确认：
 | **完整图标**（主体 + 文字） | 画面同时包含主体图像和标题文字 | 继续 3A-4 → 生成完整提示词（主体 + 文字联动） |
 | **纯主体**（Subject Only） | 只有动物/角色/道具等主体，无文字无背景 | 跳转 Template S 流程 |
 | **纯文字**（Text Only） | 只有标题文字（如 WILD / BONUS），无主体 | 跳转 Template T 流程 |
-| **纯背景**（Background Only） | 只有背景光效/粒子/环境元素，无主体无文字 | 跳转 Template BG 流程（仅适用于 Scene B/C） |
+| **纯背景**（Background Only） | 只有背景光效/粒子/环境元素，无主体无文字 | **Scene A 下：报错，提示用户改选 Scene B/C 或重新上传**；Scene B/C 下：跳转 Template BG 流程 |
 
 > 若 AI 无法确定素材类型，询问用户：「请问你上传的图片是完整图标、纯主体、纯文字，还是纯背景素材？」
 
@@ -600,7 +602,7 @@ Describe ALL applicable items from the following:
 
 ### 4-1 用户选择菜单
 
-向用户展示以下菜单，3项必选，补充项可选：
+向用户展示以下菜单，**动效方向必选**，其余项缺省时自动补齐：
 
 **动效方向（必选）**
 - **[A]** 轻量待机
@@ -610,14 +612,14 @@ Describe ALL applicable items from the following:
 - **[E]** 对抗演出
 - **[F]** 自定义关键词（用户自由描述，Skill 自动归类）
 
-**表现强度（必选）**
+**表现强度（可缺省，默认 B 中）**
 - **[A]** 轻 — 适合常驻 UI，不抢画面
-- **[B]** 中 — 有明显演出感，适合大多数 Slots 图标
+- **[B]** 中 — 有明显演出感，适合大多数 Slots 图标（默认）
 - **[C]** 强 — 冲击更足，适合出现、触发、大奖感
 
-**预览形式（必选）**
+**预览形式（可缺省，默认 B 半结构）**
 - **[A]** 一句话预览
-- **[B]** 半结构预览
+- **[B]** 半结构预览（默认）
 - **[C]** 详细预览
 
 **可选补充**
@@ -627,10 +629,10 @@ Describe ALL applicable items from the following:
 
 ### 4-2 默认规则
 
-🛑 **Skill 不得因为用户未填写可选项而追问。规则如下：**
+🛑 **Skill 不得因为用户未填写可缺省项而追问。规则如下：**
 
-- 用户未指定**表现强度** → 默认 **[B] 中**
-- 用户未指定**预览形式** → 默认 **[B] 半结构预览**
+- 用户未指定**表现强度** → 自动使用 **[B] 中**
+- 用户未指定**预览形式** → 自动使用 **[B] 半结构预览**
 - 用户未补充主体 / 类型 / 限制 / 风格 → **优先根据当前上下文自动推断，不主动追问**
 - **唯一例外**：主体信息缺失且会明显影响方案输出时，补问 **1 个** 最关键问题，不得追问更多
 
@@ -728,10 +730,10 @@ Describe ALL applicable items from the following:
 
 [连贯描述主体动效：按主体专项规则描述核心部位动作及带动关系，融入氛围变化与粒子效果，控制在 3–5 句。
 必须明确：哪个部位 / 做了什么 / 带动什么跟随 / 氛围如何变化。禁止使用模糊表达。]
-[高光触发（仅待机态）：每 8–10 秒，描述短暂增强效果（0.5–1.0 秒），随后 settles into stillness 回归平静。]
+[高光触发（仅待机态）：每 8–10 秒，描述短暂增强效果（0.5–1.0 秒），随后收束回归平静。]
 
 保持主体外形、纹理、色彩一致，无变形。[中等动态 / 小幅动态]，待机态无缝循环。
-Maintain visual consistency, no distortion, seamless loop, [Subtle/Moderate/Dynamic] motion, smooth pacing.
+保持主体外形、纹理、色彩一致，无变形，无缝循环。[小幅动态 / 中等动态 / 大动态]，节奏流畅。
 ```
 
 **Seedance 叙事版 [可选]:**
@@ -741,7 +743,7 @@ Maintain visual consistency, no distortion, seamless loop, [Subtle/Moderate/Dyna
 [用自然叙事段落描述完整动效过程，无需分段标签]
 示例（猛虎中奖）：猛虎在中奖瞬间向前冲刺——下颌猛然张开，利齿清晰可见，眼睛由紧缩
 骤然迸发出金色光焰，颈部肌肉绷紧隆起，能量环向外爆裂扩散，金币如瀑布般倾泻而下。
-固定镜头，无变形，动感十足，无缝循环。[Subtle/Moderate/Dynamic] motion, smooth pacing.
+固定镜头，无变形，动感十足，无缝循环。[小幅动态 / 中等动态 / 大动态]，节奏流畅。
 ```
 
 > **使用说明：** 叙事版适合复杂有机主体（动物/角色）；简单几何主体（宝石/硬币）使用结构化版即可。
@@ -789,7 +791,7 @@ Vidu Q2 使用官方首帧/中间帧/尾帧结构；Seedance 2.0 使用分段标
 - 意图[D]：主体稳定在@图片2的最终姿态]
 
 保持主体外形与表面细节一致，无变形。[小幅动态 / 中等动态 / 大动态]
-Maintain visual consistency, no distortion, seamless loop (if applicable), [Subtle/Moderate/Dynamic] motion, smooth pacing.
+保持主体外形、纹理、色彩一致，无变形（如为循环态，无缝循环）。[小幅动态 / 中等动态 / 大动态]，节奏流畅。
 ```
 
 
@@ -813,7 +815,7 @@ Maintain visual consistency, no distortion, seamless loop (if applicable), [Subt
 [连贯描述入场过程：面板以缓动方式出现 → 主体入场动作与表情 → 背景光效积蓄 → 粒子效果 → 标题出现 → 入场完成爆发，控制在 4–6 句。]
 
 带缓动的流畅入场，面板边界清晰，文字可读，避免突然出现或硬边缘。
-Maintain visual consistency, no distortion, Bold motion, smooth pacing.
+保持主体外形、纹理、色彩一致，无变形。大动态，节奏流畅。
 ```
 
 
@@ -836,9 +838,9 @@ Maintain visual consistency, no distortion, Bold motion, smooth pacing.
 @图片1的[弹窗主体核心特征]，娱乐游戏 Free Game 触发弹窗待机动效，固定镜头，无缝循环，[风格质感]，轻柔持续。
 
 [连贯描述待机循环：主体轻柔持续动作 + 面板边框光晕脉冲 + 粒子缓慢漂浮，控制在 2–3 句。]
-每 8–10 秒短暂增强光晕或粒子脉冲 0.5–1 秒，随后 settles into stillness 回归平静，无缝循环。
+每 8–10 秒短暂增强光晕或粒子脉冲 0.5–1 秒，随后收束回归平静，无缝循环。
 
-Maintain visual consistency, no distortion, seamless loop, Gentle motion, smooth pacing.
+保持主体外形、纹理、色彩一致，无变形，无缝循环。小幅动态，节奏轻柔。
 ```
 
 
@@ -864,7 +866,7 @@ Maintain visual consistency, no distortion, seamless loop, Gentle motion, smooth
 [通用转场（如已选）：@图片1的 Scatter 图标出现画面中心，能量向外辐射，光圈扩散至全屏，转场发生在扩散峰值。]
 
 无缝空间感，无硬切，转场时长 1.5–3 秒。
-Maintain visual consistency, Sweeping motion, smooth immersive pacing.
+保持画面视觉一致性，大动态，节奏沉浸流畅。
 ```
 
 
@@ -888,7 +890,7 @@ Maintain visual consistency, Sweeping motion, smooth immersive pacing.
 [连贯描述入场过程：面板伴随能量扩散出现 → 奖励主体入场 → 数字向上滚动 → 金光充满画面 → 金币爆发 → 胜利文字出现 → 高潮爆发，控制在 4–6 句。]
 
 庆祝感强烈但节奏有序，数字清晰可读，避免混乱。
-Maintain visual consistency, no distortion, Bold motion, smooth pacing.
+保持主体外形、纹理、色彩一致，无变形。大动态，节奏流畅。
 ```
 
 
@@ -913,7 +915,7 @@ Maintain visual consistency, no distortion, Bold motion, smooth pacing.
 [连贯描述待机循环：奖励主体轻柔持续动作 + 数字柔和发光（不滚动）+ 金光慢速脉冲 + 金币缓慢漂浮，控制在 2–3 句。]
 每 8–10 秒短暂金光闪耀或金币弹跳增强 0.5–1 秒，随后回归平静，无缝循环。
 
-Maintain visual consistency, no distortion, seamless loop, Gentle motion, smooth pacing.
+保持主体外形、纹理、色彩一致，无变形，无缝循环。小幅动态，节奏轻柔。
 ```
 
 
@@ -938,7 +940,7 @@ Maintain visual consistency, no distortion, seamless loop, Gentle motion, smooth
 [连贯描述动效过程：背景渐亮 → 主体入场或持续动作 → Logo 出现与强调 → 整体光效氛围，控制在 3–4 句。]
 
 单次模式：有清晰开始与结束感，时长 3–5 秒。循环模式：无缝循环，无明显重启点。
-Maintain visual consistency, no distortion, [Moderate/Gentle] motion, smooth pacing.
+保持主体外形、纹理、色彩一致，无变形。[中等动态 / 小幅动态]，节奏流畅。
 ```
 
 
@@ -966,7 +968,7 @@ Maintain visual consistency, no distortion, [Moderate/Gentle] motion, smooth pac
 [连贯描述主体动效：按主体专项规则描述核心部位动作及带动关系，融入氛围变化与粒子效果，控制在 3–5 句。
 必须明确：哪个部位 / 做了什么 / 带动什么跟随 / 氛围如何变化。禁止使用模糊表达。]
 
-保持主体外形、纹理、色彩一致，无变形。[Subtle/Moderate/Dynamic] motion, smooth pacing.
+保持主体外形、纹理、色彩一致，无变形。[小幅动态 / 中等动态 / 大动态]，节奏流畅。
 ```
 
 ---
@@ -993,7 +995,7 @@ Maintain visual consistency, no distortion, [Moderate/Gentle] motion, smooth pac
 [连贯描述文字动效过程：光效层次、选配动效节奏（弹出/扫光/呼吸/粒子等）、氛围变化，控制在 3–4 句。
 各效果层错开触发节奏，禁止同时循环。]
 
-保持字形清晰可读，字色一致，无失真，seamless loop（如为待机态）。[Subtle/Gentle] motion, smooth pacing.
+保持字形清晰可读，字色一致，无失真，无缝循环（如为待机态）。[小幅动态 / 中等动态]，节奏轻柔。
 ```
 
 ---
@@ -1019,7 +1021,7 @@ Maintain visual consistency, no distortion, [Moderate/Gentle] motion, smooth pac
 [连贯描述背景动效：粒子漂浮节奏 + 光效脉冲周期 + 色彩氛围渐变，控制在 3–4 句。
 各层错开触发节奏，形成自然层次感。]
 
-背景元素保持稳定，无突变，seamless loop, [Gentle/Ambient] motion, smooth pacing.
+背景元素保持稳定，无突变，无缝循环。[小幅动态 / 轻柔氛围感]，节奏平稳。
 ```
 
 ---
