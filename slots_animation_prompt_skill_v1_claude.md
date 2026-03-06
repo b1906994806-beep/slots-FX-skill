@@ -199,6 +199,25 @@ Secondary layer — Atmosphere support:
 UI layer — Interface elements:
 - Title text / title border / title glow / decorative frame / ribbon / banner
 
+**Multi-Subject Primary / Secondary Rules（多主体主从规则）**
+
+> 适用条件：图像中识别出 **2 个或以上可独立运动的主体**（如角色+宠物、角色+武器、双吉祥物）时，必须先确定主从关系，再描述动作。
+
+| 角色 | 定义 | 动作约束 |
+|------|------|---------|
+| **Primary Driver（主驱动）** | 视觉重心最强、体积最大或行为意图最明确的主体 | 完整描述动作弧线，含部位序列、节奏、峰值、能量层级 |
+| **Secondary Follower（次从属）** | 跟随、辅助或陪衬主驱动的其余主体 | 只描述**跟随动作或补充反应**，禁止独立主运动；描述量不超过主驱动的 1/3 |
+
+**判定规则：**
+- 角色 + 宠物/配件 → 角色为 Primary，宠物/配件为 Secondary
+- 角色 + 武器（持拿关系明确）→ 角色为 Primary，武器跟随挥动为 Secondary
+- 双吉祥物 / 对称构图 → 较居中或面向镜头者为 Primary；若完全对称，选左侧为 Primary
+- 识别不确定时，询问用户：「图中有多个主体，请问哪个是主要动作对象？」
+
+**输出格式要求：**
+- 在提示词中先描述 Primary Driver 的完整动作，再用「[次主体名]随之[跟随动作]」结构附加 Secondary 描述
+- 禁止两个主体并列平权描述，避免提示词过满、AI 动作重心混乱
+
 ---
 
 ## STEP 3B: Free Game Popup & Transition Flow
