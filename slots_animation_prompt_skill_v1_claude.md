@@ -26,11 +26,6 @@
 
 ---
 
-## Skill Goal
-Based on user-uploaded images, generate AI video animation prompts for slots game assets, covering reel symbol icons, Free Game popups & transitions, and loading screen animations.
-
-Output: Dual-tool (Vidu Q2 + Seedance 2.0) × Chinese prompts simultaneously.
-
 ## MANDATORY EXECUTION RULES
 
 🛑 **NEVER generate prompts until ALL of the following are explicitly confirmed by the user:**
@@ -64,31 +59,28 @@ Output: Dual-tool (Vidu Q2 + Seedance 2.0) × Chinese prompts simultaneously.
 
 🛑 **必须逐步确认，不得跳过。用户未明确回答前禁止进入下一步。**
 
-Ask the user to complete the following two selections before proceeding:
-
 ### 1.1 Target Tool
-> 请选择目标工具 / Please select target tool:
+> 请选择目标工具：
 - **[A]** Vidu Q2
 - **[B]** Seedance 2.0
-- **[C]** 两者都输出 / Both (output both versions simultaneously)
+- **[C]** 两者都输出（同时输出两套）
 
-**Default: [C] Both**
+**默认：[C] 两者都输出**
 
 ### 1.2 Generation Mode
-> 请选择生成模式 / Please select generation mode:
-- **[1]** 首尾帧模式 / First-Last Frame Mode — **默认 / Default** — 指定动效的起点或终点状态
-- **[2]** 全能参考模式 / Full Reference Mode — **(高级 / Advanced)** — Upload one reference image, AI references it throughout
+> 请选择生成模式：
+- **[1]** 首尾帧模式 — **默认** — 指定动效的起点或终点状态
+- **[2]** 全能参考模式 — **高级** — 上传一张参考图，AI 全程参考
 
 If **[1]** First-Last Frame Mode selected:
-> 你的动效意图是什么？/ What is your animation intent?
-- **[A] 让它动起来** — 从这张图出发，向前演绎动效 / Animate FROM this image
-- **[B] 还原这一刻** — 动效以这张图作为结束状态 / Animate TO this image
-- **[C] 回到原位** — 运动后回到与上传图相同的状态（循环）/ Loop back to original state
-- **[D] 从A到B** — 我有起始和结束两个状态 / I have both start and end states
+> 你的动效意图是什么？
+- **[A] 让它动起来** — 从这张图出发，向前演绎动效
+- **[B] 还原这一刻** — 动效以这张图作为结束状态
+- **[C] 回到原位** — 运动后回到与上传图相同的状态（循环）
+- **[D] 从A到B** — 我有起始和结束两个状态
 
-Upload instructions per intent:
-- **[A] [B] [C]** — Upload **one image**
-- **[D]** — Upload **two images**: send the starting state image first, then the ending state image
+- **[A] [B] [C]** — 上传 **1 张**图片
+- **[D]** — 上传 **2 张**：先发起始状态图，再发结束状态图
 
 ---
 
@@ -96,10 +88,10 @@ Upload instructions per intent:
 
 🛑 **STEP 1 全部确认后方可进入此步骤。**
 
-> 请选择场景类型 / Please select scene type:
-- **[A]** 图标动效 / Icon Animation (Reel Symbols)
-- **[B]** Free Game 弹窗 & 转场 / Free Game Popup & Transition
-- **[C]** 加载页开场动画 / Loading Screen Opening Animation
+> 请选择场景类型：
+- **[A]** 图标动效（Reel Symbols）
+- **[B]** Free Game 弹窗 & 转场
+- **[C]** 加载页开场动画
 
 ---
 
@@ -109,7 +101,7 @@ Upload instructions per intent:
 
 ### 3A-1 Select Icon Type
 
-> 请选择图标类型 / Please select icon type:
+> 请选择图标类型：
 
 | 选项 | 类型 | 动效强度 |
 |------|------|--------|
@@ -121,8 +113,6 @@ Upload instructions per intent:
 
 ### 3A-2 Select Animation State
 
-Display available states based on icon type selected:
-
 | 图标类型 | 可选状态 |
 |---------|---------|
 | 低级图标 | 中奖动效 Win |
@@ -133,8 +123,7 @@ Display available states based on icon type selected:
 
 ### 3A-3 Upload Image
 
-> 请上传图标图片 / Please upload the icon image.
-> No additional description required. AI will automatically analyze the visual structure.
+> 请上传图标图片，AI 自动分析视觉结构。
 
 **首尾帧模式下：** 上传说明已在 STEP 1.2 中确认，按意图 [A/B/C/D] 上传对应数量图片。
 
@@ -243,16 +232,13 @@ UI layer — Interface elements:
 
 ### 3B-2 Transition Design (Only if [3] or [6] selected)
 
-> 请选择转场方案 / Please select transition design:
-- **[A]** 独立设计 Custom Design — Unique transition for this direction
-- **[B]** 通用转场 Universal Transition — Scatter icon as visual core, shared by both entry and exit transitions
+> 请选择转场方案：
+- **[A]** 独立设计 — 本次转场专属
+- **[B]** 通用转场 — 以 Scatter 图标为视觉核心，进/退场共用
 
 ### 3B-3 Upload Image
 
-> 请上传图片 / Please upload the image.
-
-- **Full Reference Mode:** Upload one image representing the popup/transition state
-- **First-Last Frame Mode:** 按 STEP 1.2 中确认的意图 [A/B/C/D] 上传对应数量图片。
+> 请上传图片（全能参考模式：1 张；首尾帧模式：按 STEP 1.2 意图上传对应数量）。
 
 ### 3B-3b Asset Type Detection（素材类型识别）
 
@@ -275,16 +261,13 @@ UI layer — Interface elements:
 
 ### 3C-1 Select Playback Mode
 
-> 请选择播放模式 / Please select playback mode:
-- **[1]** 单次播放 One-shot — Plays once with clear start and end
-- **[2]** 循环播放 Loop — Seamless loop for extended display during loading
+> 请选择播放模式：
+- **[1]** 单次播放 — 有明确开始与结束
+- **[2]** 循环播放 — 无缝循环，适合加载等待长时显示
 
 ### 3C-2 Upload Image
 
-> 请上传图片 / Please upload the image.
-
-- **Full Reference Mode:** Upload one loading screen image
-- **First-Last Frame Mode:** 按 STEP 1.2 中确认的意图 [A/B/C/D] 上传对应数量图片。
+> 请上传图片（全能参考模式：1 张；首尾帧模式：按 STEP 1.2 意图上传对应数量）。
 
 ### 3C-2b Asset Type Detection（素材类型识别）
 
@@ -301,8 +284,7 @@ UI layer — Interface elements:
 
 ### 3C-3 Describe Main Subject
 
-> 请简单描述画面主体元素 / Briefly describe the main subject elements:
-> Example: "龙形角色居中，游戏Logo在上方 / Dragon character centered, game logo at top"
+> 请简单描述画面主体元素（如：「龙形角色居中，游戏 Logo 在上方」）
 
 ---
 
@@ -650,22 +632,16 @@ Describe ALL applicable items from the following:
 
 ## COMPLIANCE / WORDING RULES
 
-### Prohibited Terms
-- 777 / jackpot / slot machine / slots / gambling
-- big win / mega win / win big (used directly as UI labels)
-- specific monetary amounts or currency references
-
-### Neutral Replacements
-| Prohibited | Replace With |
-|-----------|-------------|
-| jackpot | grand reward / ultimate prize / top achievement |
-| slot machine | spinning device / reel device / symbol device |
-| slots | reels / spinning reels / symbol reels |
-| big win / mega win | major reward / great achievement / ultimate reward |
-| win | collect / receive / unlock / achieve |
-| 777 | symbol combination / matching symbols |
-| gambling | gaming / entertainment |
-| money / cash | reward / treasure / energy |
+禁用词 → 替换词（输出前必须过滤）：
+- jackpot → grand reward / ultimate prize / top achievement
+- slot machine → spinning device / reel device / symbol device
+- slots → reels / spinning reels / symbol reels
+- big win / mega win → major reward / great achievement / ultimate reward
+- win → collect / receive / unlock / achieve
+- 777 → symbol combination / matching symbols
+- gambling → gaming / entertainment
+- money / cash → reward / treasure / energy
+- 禁止直接使用货币金额或博彩类直接表达
 
 ---
 
@@ -673,13 +649,7 @@ Describe ALL applicable items from the following:
 
 🛑 **所有 STEP 1–3 配置确认完成后，必须先经过此步骤，再生成完整提示词。**
 
-**目标：** 在生成完整提示词前，输出 2–3 个差异明确的候选方案预览，帮助用户快速锁定动效方向。
-
----
-
-### 4-1 用户选择菜单
-
-向用户展示以下菜单，**动效方向必选**，其余项缺省时自动补齐：
+**目标：** 输出 2–3 个差异明确的候选方案预览，用户确认后再生成完整提示词。向用户展示以下菜单，**动效方向必选**，其余项缺省时自动补齐：
 
 **动效方向（必选）**
 - **[A]** 轻量待机
@@ -916,7 +886,6 @@ Vidu Q2 使用官方首帧/中间帧/尾帧结构；Seedance 2.0 使用分段标
 保持主体外形、纹理、色彩一致，无变形（如为循环态，无缝循环）。[小幅动态 / 中等动态 / 大动态]，节奏流畅。
 ```
 
-
 ---
 
 ### Template B1: Trigger Popup Entry
@@ -939,7 +908,6 @@ Vidu Q2 使用官方首帧/中间帧/尾帧结构；Seedance 2.0 使用分段标
 带缓动的流畅入场，面板边界清晰，文字可读，避免突然出现或硬边缘。
 保持主体外形、纹理、色彩一致，无变形。大动态，节奏流畅。
 ```
-
 
 ---
 
@@ -964,7 +932,6 @@ Vidu Q2 使用官方首帧/中间帧/尾帧结构；Seedance 2.0 使用分段标
 
 保持主体外形、纹理、色彩一致，无变形，无缝循环。小幅动态，节奏轻柔。
 ```
-
 
 ---
 
@@ -991,7 +958,6 @@ Vidu Q2 使用官方首帧/中间帧/尾帧结构；Seedance 2.0 使用分段标
 保持画面视觉一致性，大动态，节奏沉浸流畅。
 ```
 
-
 ---
 
 ### Template B4: Settlement Popup Entry
@@ -1014,7 +980,6 @@ Vidu Q2 使用官方首帧/中间帧/尾帧结构；Seedance 2.0 使用分段标
 庆祝感强烈但节奏有序，数字清晰可读，避免混乱。
 保持主体外形、纹理、色彩一致，无变形。大动态，节奏流畅。
 ```
-
 
 ---
 
@@ -1040,7 +1005,6 @@ Vidu Q2 使用官方首帧/中间帧/尾帧结构；Seedance 2.0 使用分段标
 保持主体外形、纹理、色彩一致，无变形，无缝循环。小幅动态，节奏轻柔。
 ```
 
-
 ---
 
 ### Template C: Loading Screen Animation
@@ -1064,7 +1028,6 @@ Vidu Q2 使用官方首帧/中间帧/尾帧结构；Seedance 2.0 使用分段标
 单次模式：有清晰开始与结束感，时长 3–5 秒。循环模式：无缝循环，无明显重启点。
 保持主体外形、纹理、色彩一致，无变形。[中等动态 / 小幅动态]，节奏流畅。
 ```
-
 
 ---
 
@@ -1150,25 +1113,10 @@ Vidu Q2 使用官方首帧/中间帧/尾帧结构；Seedance 2.0 使用分段标
 
 ## FINAL OUTPUT FORMAT
 
-For every generation, output **all selected tool versions** in the following format:
+每次生成输出所有已选工具版本，格式固定如下：
 
----
-
-### 【Vidu Q2 版本】
-
-**提示词：**
-```
-[根据对应模板填写，使用中文，motion amplitude 参数标注在末尾]
-```
-
----
-
-### 【Seedance 2.0 版本】
-
-**提示词：**
-```
-[根据对应模板填写，使用中文，结尾必须包含约束语]
-```
+**【Vidu Q2 版本】提示词：**（末尾标注 motion amplitude 参数）
+**【Seedance 2.0 版本】提示词：**（末尾必须包含约束语）
 
 ---
 
@@ -1181,8 +1129,6 @@ For every generation, output **all selected tool versions** in the following for
 - **Vidu Q2 首尾帧模式专用（Scene A 图标动效）：** 必须使用`首帧 / 中间帧 / 尾帧`三段结构输出，不得使用其他格式。Scene B（弹窗/转场）和 Scene C（加载页）即使选择首尾帧模式，也使用连贯叙述格式（结构复杂不适用三段式），意图[D]双图场景在提示词中同时引用@图片1和@图片2描述起止状态即可。
 - **Seedance 2.0 提示词规则：** 所有 Seedance 输出必须以`@图片1的[主体核心特征]，`开头（必选项）；意图[D]双图场景需同时标注`@图片1`和`@图片2`；不得遗漏@标记；使用连贯叙述，不使用`【】`分段标签；控制在 5–10 行，避免冗余修饰词
 - Always perform Style Detection (S1–S9) before generating prompts; incorporate the matched style motion vocabulary naturally into subject action and atmosphere descriptions
-- **NEVER skip or auto-fill any configuration step**, even if the user's message contains partial information. Always surface unconfirmed steps explicitly before generating output.
-- **NEVER interpret "automatically analyze" as permission to bypass user confirmation steps.** Automatic analysis applies only to image content (subject detection, layer decomposition, style detection) — not to configuration selections.
 - Always apply compliance word filtering before output
 - Idle states always require seamless loop notation
 - Seedance 2.0 output must always include explicit constraint sentence
@@ -1203,24 +1149,18 @@ For every generation, output **all selected tool versions** in the following for
 
 > 以下词汇专为 Seedance 2.0 优化，注入叙事版或结构化版均可提升生成效果。
 
-### 镜头语言 / Camera Language
+### 镜头语言
+- 细节强调：`tight on [subject]` / `close on [detail]`
+- 整体画面：`wide reveal` / `full frame`
+- 固定镜头：`camera holds steady on` / `static shot`
+- 聚焦能量：`frame centers on [subject]`
 
-| 用途 | 词汇 |
-|------|------|
-| 强调主体细节 | `tight on [subject]` / `close on [detail]` |
-| 展示整体画面 | `wide reveal` / `full frame` |
-| 保持固定镜头 | `camera holds steady on` / `static shot` |
-| 聚焦能量核心 | `frame centers on [subject]` |
-
-### 节奏词汇 / Rhythm & Pacing
-
-| 动效节奏 | 词汇 |
-|---------|------|
-| 爆发瞬间 | `surges in a single beat` / `ignites suddenly` / `erupts outward` |
-| 缓入启动 | `eases into motion` / `stirs to life` / `gradually awakens` |
-| 收束静止 | `settles into stillness` / `fades to rest` / `returns to calm` |
-| 循环呼吸 | `breathes continuously` / `pulses in a steady rhythm` / `flows without interruption` |
-| 冲击落定 | `lands with impact then holds` / `strikes and steadies` |
+### 节奏词汇
+- 爆发：`surges in a single beat` / `ignites suddenly` / `erupts outward`
+- 缓入：`eases into motion` / `stirs to life` / `gradually awakens`
+- 收束：`settles into stillness` / `fades to rest` / `returns to calm`
+- 循环：`breathes continuously` / `pulses in a steady rhythm` / `flows without interruption`
+- 落定：`lands with impact then holds` / `strikes and steadies`
 
 ### 使用原则
 - 叙事版：把节奏词汇融入动效描述段落，替代模糊副词（如 "slowly" → "eases into motion"）
