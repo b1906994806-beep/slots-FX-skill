@@ -521,6 +521,19 @@ Describe ALL applicable items from the following:
 - Atmospheric light pulse
 - Highlight trigger: every 8–10 seconds
 
+#### Popup Information Hierarchy（信息层级优先级）
+
+> 弹窗中多个视觉层同时运动时，演出资源必须按以下优先级分配。**高层级元素必须最后收束（即停留时间最长、最后稳定）；低层级元素只做配衬，不得超越高层级的视觉强度。**
+
+| 优先级 | 元素 | 演出原则 |
+|-------|------|---------|
+| ① 最高 | 标题文字 / 大奖金额数字 | 最后出现或最后稳定；字体清晰可读；光效托高不遮挡 |
+| ② 高 | 主体角色 / 核心奖励物 | 运动幅度最大；入场早于文字，但峰值不压过标题 |
+| ③ 中 | 主体装饰粒子 / 能量环 | 跟随主体；消散在文字稳定之前 |
+| ④ 低 | 背景粒子 / 环境光效 | 最先出现、最先衰减；强度不超过主体粒子的 50% |
+
+**违禁模式：** 背景特效覆盖标题区域 / 粒子遮挡数字 / 多层同时峰值（导致视觉过载）
+
 #### Popup Motion Hard Restrictions
 - Panel boundaries must remain clear (no overflow)
 - Text / numbers must remain readable at all times
@@ -567,6 +580,19 @@ Describe ALL applicable items from the following:
 - Atmospheric effects breathe slowly
 - Logo subtle pulse or glow cycle
 - Seamless loop with no visible restart point
+
+#### Loading Screen Information Hierarchy（信息层级优先级）
+
+> 加载页元素同时运动时，演出资源按以下优先级分配。**游戏 Logo 是最终视觉锚点，必须最后稳定且最清晰。**
+
+| 优先级 | 元素 | 演出原则 |
+|-------|------|---------|
+| ① 最高 | 游戏 Logo / 品牌标题 | 最后入场或最后稳定；出现后不再运动（仅允许轻脉冲） |
+| ② 高 | 主体角色 / 核心图像 | 入场动作最具冲击力；Logo 出现前已完成主运动弧线 |
+| ③ 中 | 主体光效 / 能量粒子 | 随主体消散，Logo 出现时必须已衰减至低强度 |
+| ④ 低 | 背景环境 / 大气粒子 | 全程低强度；不得遮挡主体或 Logo 区域 |
+
+**违禁模式：** Logo 被背景粒子遮挡 / 主体运动与 Logo 出现同时峰值 / 循环模式中 Logo 强烈闪烁
 
 ---
 
