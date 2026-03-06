@@ -24,8 +24,6 @@
 2. 若用户消息中已包含部分配置信息（如"Scatter 图标的中奖动效"），**仍需逐步确认所有未明确的步骤**，不得自动填充
 3. 若触发词模糊（如仅说"做个动效"而无游戏/图标语境），先回复一句确认："你是要生成 Slots 游戏动效提示词吗？"
 
----
-
 ## MANDATORY EXECUTION RULES
 
 🛑 **NEVER generate prompts until ALL of the following are explicitly confirmed by the user:**
@@ -35,12 +33,12 @@
 3. **STEP 2** — Scene type selected
 4. **STEP 3A-1** — Icon type selected (if Scene A)
 5. **STEP 3A-2** — Animation state selected (if Scene A)
-6. **STEP 3A-3b** — Asset type detected and confirmed (Complete Icon / Subject Only / Text Only / Background Only)
+6. **STEP 3A-3b** — Asset type detected（置信度 ≥ 90% 自动通过；低于 90% 需用户确认）(Complete Icon / Subject Only / Text Only / Background Only)
 7. **STEP 3B-1** — Popup/Transition stage selected (if Scene B)
 8. **STEP 3B-2** — Transition design selected if stage [3] or [6] (if Scene B)
-9. **STEP 3B-3b** — Asset type detected and confirmed (Complete Popup / Background Only) (if Scene B)
+9. **STEP 3B-3b** — Asset type detected（置信度 ≥ 90% 自动通过；低于 90% 需用户确认）(Complete Popup / Background Only) (if Scene B)
 10. **STEP 3C-1** — Playback mode selected (if Scene C)
-11. **STEP 3C-2b** — Asset type detected and confirmed (Complete Loading Page / Background Only) (if Scene C)
+11. **STEP 3C-2b** — Asset type detected（置信度 ≥ 90% 自动通过；低于 90% 需用户确认）(Complete Loading Page / Background Only) (if Scene C)
 12. **STEP 4** — 方案预览已输出，用户已选定方案（或确认在某方案基础上微调）
 
 ⚠️ **If the user's message already contains partial information** (e.g. mentions "待机动效" or "图标"), acknowledge it, then **still ask for all unconfirmed steps** before generating. Do NOT auto-fill missing selections.
@@ -53,11 +51,7 @@
 
 ✅ **STEP 4 默认规则：** 动效方向为唯一必选项；强度默认中；预览形式默认半结构；可选补充缺失时自动推断，不追问。
 
----
-
 ## STEP 1: Global Configuration
-
-🛑 **必须逐步确认，不得跳过。用户未明确回答前禁止进入下一步。**
 
 ### 1.1 Target Tool
 > 请选择目标工具：
@@ -82,22 +76,14 @@ If **[1]** First-Last Frame Mode selected:
 - **[A] [B] [C]** — 上传 **1 张**图片
 - **[D]** — 上传 **2 张**：先发起始状态图，再发结束状态图
 
----
-
 ## STEP 2: Scene Selection
-
-🛑 **STEP 1 全部确认后方可进入此步骤。**
 
 > 请选择场景类型：
 - **[A]** 图标动效（Reel Symbols）
 - **[B]** Free Game 弹窗 & 转场
 - **[C]** 加载页开场动画
 
----
-
 ## STEP 3A: Icon Animation Flow
-
-🛑 **STEP 2 确认场景 [A] 后方可进入。3A-1 → 3A-2 → 3A-3 必须按顺序逐步确认，不得跳步。**
 
 ### 3A-1 Select Icon Type
 
@@ -105,11 +91,11 @@ If **[1]** First-Last Frame Mode selected:
 
 | 选项 | 类型 | 动效强度 |
 |------|------|--------|
-| [1] | 低级图标 Low-tier Symbol | 一级 Level 1 |
-| [2] | 高级图标 High-tier Symbol | 二级 Level 2 |
-| [3] | Wild 图标 | 三级 Level 3 |
-| [4] | Scatter 图标 | 三级 Level 3 |
-| [5] | Bonus 图标 | 三级 Level 3 |
+| [1] | 低级图标 | Level 1 |
+| [2] | 高级图标 | Level 2 |
+| [3] | Wild | Level 3 |
+| [4] | Scatter | Level 3 |
+| [5] | Bonus | Level 3 |
 
 ### 3A-2 Select Animation State
 
@@ -131,7 +117,7 @@ If **[1]** First-Last Frame Mode selected:
 
 🛑 **图片上传后，必须先判断素材类型，再进入视觉识别。禁止跳过此步骤。**
 
-AI 自动识别上传图片属于以下哪种类型，并告知用户确认：
+AI 自动识别上传图片属于以下哪种类型，按置信度分级处理（**不得统一暂停等待确认**）：
 
 | 类型 | 识别特征 | 后续流程 |
 |------|---------|---------|
@@ -140,9 +126,11 @@ AI 自动识别上传图片属于以下哪种类型，并告知用户确认：
 | **纯文字**（Text Only） | 只有标题文字（如 WILD / BONUS），无主体 | 跳转 Template T 流程 |
 | **纯背景**（Background Only） | 只有背景光效/粒子/环境元素，无主体无文字 | **Scene A 下：报错，提示用户改选 Scene B/C 或重新上传**；Scene B/C 下：跳转 Template BG 流程 |
 
-> **完全无法确定时**，询问用户：「请问你上传的图片是完整图标、纯主体、纯文字，还是纯背景素材？」
+> **置信度 ≥ 90%：** 自动通过，括号内标注结果继续流程，例如：「检测到：完整图标（主体 + 文字）✓ 继续识别风格…」无需用户回复。
 >
-> **低置信度时（有倾向但不确定）**，输出双候选确认：「我更倾向识别为 **[类型A]**（理由：[特征依据]），其次可能是 **[类型B]**。请确认或选择。」— 用户确认后继续，无需重新上传。
+> **置信度 50–89%（有倾向但不确定）：** 输出双候选确认：「我更倾向识别为 **[类型A]**（理由：[特征依据]），其次可能是 **[类型B]**。请确认或选择。」— 用户确认后继续，无需重新上传。
+>
+> **置信度 < 50%（完全无法确定）：** 询问用户：「请问你上传的图片是完整图标、纯主体、纯文字，还是纯背景素材？」
 
 ### 3A-4 Automatic Visual Recognition
 
@@ -211,11 +199,7 @@ UI layer — Interface elements:
 - 在提示词中先描述 Primary Driver 的完整动作，再用「[次主体名]随之[跟随动作]」结构附加 Secondary 描述
 - 禁止两个主体并列平权描述，避免提示词过满、AI 动作重心混乱
 
----
-
 ## STEP 3B: Free Game Popup & Transition Flow
-
-🛑 **STEP 2 确认场景 [B] 后方可进入。3B-1 → 3B-2（如适用）→ 3B-3 必须按顺序逐步确认。**
 
 ### 3B-1 Select Stage
 
@@ -242,22 +226,20 @@ UI layer — Interface elements:
 
 ### 3B-3b Asset Type Detection（素材类型识别）
 
-🛑 **图片上传后，必须先判断素材类型，再进入后续生成。**
+🛑 **图片上传后，必须先判断素材类型，再进入后续生成。按置信度分级处理（不得统一暂停等待确认）。**
 
 | 类型 | 识别特征 | 后续流程 |
 |------|---------|---------|
 | **完整弹窗素材**（主体 + 面板 + 文字） | 包含弹窗面板、主体图像、标题文字等多层元素 | 继续现有 Scene B 生成流程 |
 | **纯背景**（Background Only） | 只有背景光效/粒子/环境，无面板无主体 | 跳转 Template BG 流程 |
 
-> **完全无法确定时**，询问用户：「请问这是完整弹窗素材，还是纯背景层图片？」
+> **置信度 ≥ 90%：** 自动通过，括号内标注结果继续流程，例如：「检测到：完整弹窗素材 ✓ 继续…」无需用户回复。
 >
-> **低置信度时（有倾向但不确定）**，输出双候选确认：「我更倾向识别为 **[类型A]**（理由：[特征依据]），其次可能是 **[类型B]**。请确认或选择。」
-
----
+> **置信度 50–89%（有倾向但不确定）：** 输出双候选确认：「我更倾向识别为 **[类型A]**（理由：[特征依据]），其次可能是 **[类型B]**。请确认或选择。」
+>
+> **置信度 < 50%（完全无法确定）：** 询问用户：「请问这是完整弹窗素材，还是纯背景层图片？」
 
 ## STEP 3C: Loading Screen Opening Animation Flow
-
-🛑 **STEP 2 确认场景 [C] 后方可进入。3C-1 → 3C-2 → 3C-2b → 3C-3 必须按顺序逐步确认。**
 
 ### 3C-1 Select Playback Mode
 
@@ -271,22 +253,22 @@ UI layer — Interface elements:
 
 ### 3C-2b Asset Type Detection（素材类型识别）
 
-🛑 **图片上传后，必须先判断素材类型，再进入后续生成。**
+🛑 **图片上传后，必须先判断素材类型，再进入后续生成。按置信度分级处理（不得统一暂停等待确认）。**
 
 | 类型 | 识别特征 | 后续流程 |
 |------|---------|---------|
 | **完整加载页素材**（主体 + Logo + 背景） | 包含主体图像、游戏 Logo 及背景环境 | 继续 3C-3 描述主体 |
 | **纯背景**（Background Only） | 只有背景光效/粒子/环境，无主体无 Logo | 跳转 Template BG 流程（跳过 3C-3）|
 
-> **完全无法确定时**，询问用户：「请问这是包含主体的完整加载页素材，还是纯背景层图片？」
+> **置信度 ≥ 90%：** 自动通过，括号内标注结果继续流程，例如：「检测到：完整加载页素材 ✓ 继续…」无需用户回复。
 >
-> **低置信度时（有倾向但不确定）**，输出双候选确认：「我更倾向识别为 **[类型A]**（理由：[特征依据]），其次可能是 **[类型B]**。请确认或选择。」
+> **置信度 50–89%（有倾向但不确定）：** 输出双候选确认：「我更倾向识别为 **[类型A]**（理由：[特征依据]），其次可能是 **[类型B]**。请确认或选择。」
+>
+> **置信度 < 50%（完全无法确定）：** 询问用户：「请问这是包含主体的完整加载页素材，还是纯背景层图片？」
 
 ### 3C-3 Describe Main Subject
 
 > 请简单描述画面主体元素（如：「龙形角色居中，游戏 Logo 在上方」）
-
----
 
 ## MOTION RULES BY SCENE
 
@@ -329,15 +311,9 @@ UI layer — Interface elements:
 - No full animation release yet
 - Duration: loops until trigger resolved
 
----
-
 ### Subject-Specific Body Motion Rules (Win State)
 
-These rules define the **primary body action** for each subject type.
-Always describe these motions explicitly in the prompt — never leave subject motion vague.
-
 #### Animal Subjects (Tiger / Lion / Dragon / Wolf / Eagle etc.)
-Describe ALL applicable items from the following:
 - **Head:** thrust sharply forward toward camera OR tilt upward in roar
 - **Jaw:** snaps fully open, fangs/teeth clearly revealed, sequence: closed → open
 - **Eyes:** narrow (tension) → burst open with peak glow / color flare
@@ -389,8 +365,6 @@ Describe ALL applicable items from the following:
 - No camera movement / cuts / zooms
 - No fast flashing or violent motion
 - All idle states must be seamlessly loopable
-
----
 
 ### UI Layer Motion Rules (Title / Text Elements)
 
@@ -481,8 +455,6 @@ Describe ALL applicable items from the following:
 - 禁止文字遮挡主体核心部位
 - 文字字形、字色任何时候保持清晰可读，不因动效失真
 
----
-
 ### Popup Motion Rules
 
 #### Trigger Popup — Entry
@@ -531,8 +503,6 @@ Describe ALL applicable items from the following:
 - Looping states must be seamlessly loopable
 - No fast flashing or strobing
 
----
-
 ### Transition Motion Rules
 
 #### Custom Transition (IN or OUT)
@@ -553,8 +523,6 @@ Describe ALL applicable items from the following:
 - No hard cuts or abrupt jumps
 - Player must feel continuous spatial flow
 - Duration: 1.5–3 seconds
-
----
 
 ### Loading Screen Motion Rules
 
@@ -584,11 +552,7 @@ Describe ALL applicable items from the following:
 
 **违禁模式：** Logo 被背景粒子遮挡 / 主体运动与 Logo 出现同时峰值 / 循环模式中 Logo 强烈闪烁
 
----
-
 ## STYLE MOTION PROFILES
-
-风格识别结果影响所有动效描述的**运动特征词汇**和**节奏感**。生成提示词时，在主体动作和氛围动效描述中融入对应风格的运动关键词。
 
 | 风格 | 运动特征 | Vidu 增强词 | Seedance 增强词 |
 |------|---------|-----------|--------------|
@@ -602,12 +566,8 @@ Describe ALL applicable items from the following:
 | **S8 Q版萌系** | 超级弹跳，泡泡感爆发，欢快节奏 | super bounce / bubbly pop / joyful burst / candy spring | ultra bouncy / pop explosion / playful surge / cheerful snap |
 | **S9 印度宝莱坞** | 花瓣飘落，珠宝闪烁，舞蹈律动，华丽绽放 | ornate flourish / jewel sparkle / dance rhythm / petal drift | celebratory bloom / jeweled shimmer / graceful dance / festive burst |
 
-**使用方式：**
-- 将风格词汇**自然融入**主体动作和氛围描述，不单独列出
-- Vidu 版：在动效描述中插入 1–2 个风格词汇
-- Seedance 版：在叙事段落或约束语中融入风格节奏感描述
 
----
+
 
 ## INTENSITY MAPPING
 
@@ -628,8 +588,6 @@ Describe ALL applicable items from the following:
 | Loading One-shot | — | 中等动态 | Progressive / Clear / Cinematic | — | — |
 | Loading Loop | — | 小幅动态 | Ambient / Seamless / Breathable | — | — |
 
----
-
 ## COMPLIANCE / WORDING RULES
 
 禁用词 → 替换词（输出前必须过滤）：
@@ -643,13 +601,9 @@ Describe ALL applicable items from the following:
 - money / cash → reward / treasure / energy
 - 禁止直接使用货币金额或博彩类直接表达
 
----
-
 ## STEP 4: 方案预览（Pre-generation Scheme Preview）
 
-🛑 **所有 STEP 1–3 配置确认完成后，必须先经过此步骤，再生成完整提示词。**
-
-**目标：** 输出 2–3 个差异明确的候选方案预览，用户确认后再生成完整提示词。向用户展示以下菜单，**动效方向必选**，其余项缺省时自动补齐：
+输出 2–3 个差异明确的候选方案，用户确认后再生成完整提示词。**动效方向必选**，其余项缺省时自动补齐：
 
 **动效方向（必选）**
 - **[A]** 轻量待机
@@ -673,22 +627,14 @@ Describe ALL applicable items from the following:
 **可选补充**
 > 主体（文字 / 动物 / 文字+动物）/ 类型（出现 / 待机 / 转场）/ 限制（不要缩放 / 不要位移 / 不要镜头 / 简单循环）/ 风格（写实 / 神兽 / 夸张 / 高级感 / 爆发型）/ **排除（不要抖动 / 不要金币 / 不要闪烁 / 不要复杂特效 / 用户自由描述）**
 
----
-
 ### 4-2 默认规则
-
-🛑 **Skill 不得因为用户未填写可缺省项而追问。规则如下：**
 
 - 用户未指定**表现强度** → 自动使用 **[B] 中**
 - 用户未指定**预览形式** → 自动使用 **[B] 半结构预览**
 - 用户未补充主体 / 类型 / 限制 / 风格 → **优先根据当前上下文自动推断，不主动追问**
 - **唯一例外**：主体信息缺失且会明显影响方案输出时，补问 **1 个** 最关键问题，不得追问更多
 
----
-
-### 4-3 Skill 自动决定差异维度
-
-🛑 **差异维度由 Skill 根据当前动效状态自动匹配，不向用户暴露，不询问用户。**
+### 4-3 差异维度映射（内部使用，不向用户暴露）
 
 | 动效状态 | 自动差异维度（Skill 内部使用）|
 |---|---|
@@ -702,9 +648,7 @@ Describe ALL applicable items from the following:
 | Loading One-shot | 环境唤醒型 / 主体入场型 / 光效掠过型 |
 | Loading Loop | 大气呼吸型 / 粒子循环型 / 光晕脉动型 |
 
-#### 动效方向内部偏置映射（Skill 内部使用，不向用户暴露）
-
-用户选择动效方向后，Skill 以下表为依据，在差异维度候选中**优先选取与方向偏置匹配的类型**，调整方案的动作结构、节奏感、视觉重心和光效层级：
+#### 动效方向偏置映射（内部使用）
 
 | 动效方向 | 动作结构偏置 | 节奏类型偏置 | 视觉重心偏置 | 光效层级偏置 |
 |---------|------------|------------|------------|------------|
@@ -715,88 +659,23 @@ Describe ALL applicable items from the following:
 | **[E] 对抗演出** | 强势出场/压迫姿态/能量威慑 | 紧张蓄积后爆发 | 主体正面/攻击姿态 | 高（强烈对比，暗背景+高光主体） |
 | **[F] 自定义** | 解析用户关键词，归类到最近的 [A–E] 偏置，优先映射动作核心词 | — | — | — |
 
-> **与差异维度表的协同：** 差异维度表决定"方案类型选哪几种"，方向偏置表决定"在这几种中，优先呈现什么感觉"。两表共同约束每个候选方案的内容取向。
-
----
-
 ### 4-4 方案预览输出规则
 
-- 根据用户选择（动效方向 + 强度）与当前动效状态，从对应差异维度中选取 **2–3 个**输出
-- 方案之间必须在**动作结构、节奏感或视觉重心**上有明显差异，**禁止同义换词**
-- **若用户填写了排除项**：所有候选方案必须规避排除项中提及的动效元素或演法；排除项不计入方案差异维度，仅作硬性约束
-- 按用户选择的预览形式输出：
+- 从对应差异维度中选取 **2–3 个**，方案间**动作结构、节奏感或视觉重心**必须有明显差异，禁止同义换词
+- 排除项作硬性约束，规避所有候选方案中的指定元素
 
-**[A] 一句话预览格式：**
-```
-方案一：[方案名称] — [一句话描述核心动效]
-方案二：[方案名称] — [一句话描述核心动效]
-方案三：[方案名称] — [一句话描述核心动效]
-```
+预览格式字段：
+- **[A] 一句话**：`方案名 — 核心动效一句话`
+- **[B] 半结构（默认）**：`方案名 / 动作核心 / 光效节奏 / 整体感受`
+- **[C] 详细**：`方案名 / 动作核心（含部位因果链）/ 光效节奏 / 文字联动 / 整体感受`
+- **[ABC] 批量全档**：跳过单方案预览，直接输出轻/中/强三档（均用半结构格式），询问：`[轻] [中] [强] [全部生成] [调整方向]`
 
-**[B] 半结构预览格式：**
-```
-方案一：[方案名称]
-动作核心：[主体核心动作 1–2 句]
-光效节奏：[光效/粒子描述 1 句]
-整体感受：[一句话定性]
+### 4-5 用户确认
 
-方案二 / 方案三：同上结构
-```
-
-**[C] 详细预览格式：**
-```
-方案一：[方案名称]
-动作核心：[主体动作完整描述，含部位/节奏/因果链]
-光效节奏：[光效层次、粒子类型、触发时序]
-文字联动：[UI Layer 文字动效描述（如有）]
-整体感受：[风格定性]
-
-方案二 / 方案三：同上结构
-```
-
----
-
-**[ABC] 批量全档输出格式：**
-
-> 用户选择 [ABC] 批量全档时，跳过单方案预览，直接输出以下结构（预览形式自动使用半结构 [B]，方向偏置保持用户选定方向）：
-
-```
-【轻档】— 适合常驻待机 / 精细长线使用
-动作核心：[低强度版描述]
-光效节奏：[低光效版]
-整体感受：[轻量感定性]
-
-【中档】— 标准演出强度（推荐起点）
-动作核心：[中强度版描述]
-光效节奏：[中光效版]
-整体感受：[均衡感定性]
-
-【强档】— 适合触发/中奖/大奖出现
-动作核心：[高强度版描述]
-光效节奏：[高光效版]
-整体感受：[冲击感定性]
-```
-
-> 输出后询问：**「请选择档位生成完整提示词，或告诉我调整方向：」**
-> [轻] [中] [强] [全部生成] [调整方向]
-> 选"全部生成"时，依次输出三套完整 Vidu Q2 + Seedance 2.0 提示词。
-
----
-
-### 4-5 用户确认与流程跳转
-
-**普通模式**（强度选 [A] / [B] / [C] 之一）预览输出后：
-
-> **请选择方案，或告诉我在哪个方案基础上微调：**
-> [1] 方案一 [2] 方案二 [3] 方案三 [再来几个] [微调方案X]
-
-- 用户选定方案 → 以所选方案为基础，生成完整提示词
-- 用户要求"再来几个" → 基于相同配置重新生成 2–3 个新方案
-- 用户要求微调 → 在指定方案基础上调整后再次预览，确认后生成完整提示词
-
-**批量全档模式**（强度选 [ABC]）使用专用确认话术（见上方 [ABC] 批量全档输出格式），不使用本节话术。
-
----
+预览输出后询问：`[1]方案一 [2]方案二 [3]方案三 [再来几个] [微调方案X]`
+- 选定方案 → 生成完整提示词
+- 再来几个 → 重新生成 2–3 个新方案
+- 微调 → 调整后再次预览
 
 ## OUTPUT PROMPT TEMPLATES
 
@@ -838,16 +717,9 @@ Describe ALL applicable items from the following:
 固定镜头，无变形，动感十足，无缝循环。[小幅动态 / 中等动态 / 大动态]，节奏流畅。
 ```
 
-> **使用说明：** 叙事版适合复杂有机主体（动物/角色）；简单几何主体（宝石/硬币）使用结构化版即可。
-
----
+> 叙事版适合动物/角色；宝石/硬币用结构化版。
 
 ### Template A2: Icon Animation — First-Last Frame Mode
-
-根据 STEP 1.2 中选择的意图 [A/B/C/D] 填写对应描述。
-Vidu Q2 使用官方首帧/中间帧/尾帧结构；Seedance 2.0 使用分段标签结构。
-
----
 
 **Vidu Q2 模板：**
 ```
@@ -869,8 +741,6 @@ Vidu Q2 使用官方首帧/中间帧/尾帧结构；Seedance 2.0 使用分段标
 固定镜头，保持主体外形纹理色彩一致，无变形。[小幅动态 / 中等动态 / 大动态]
 ```
 
----
-
 **Seedance 2.0 模板：**
 ```
 意图[A/B/C]：@图片1的[主体核心特征一句话描述]，娱乐游戏数字转轴符号动效，固定镜头，[风格质感]，[节奏氛围]。
@@ -885,8 +755,6 @@ Vidu Q2 使用官方首帧/中间帧/尾帧结构；Seedance 2.0 使用分段标
 
 保持主体外形、纹理、色彩一致，无变形（如为循环态，无缝循环）。[小幅动态 / 中等动态 / 大动态]，节奏流畅。
 ```
-
----
 
 ### Template B1: Trigger Popup Entry
 
@@ -909,8 +777,6 @@ Vidu Q2 使用官方首帧/中间帧/尾帧结构；Seedance 2.0 使用分段标
 保持主体外形、纹理、色彩一致，无变形。大动态，节奏流畅。
 ```
 
----
-
 ### Template B2: Trigger Popup Idle
 
 **Vidu Q2 模板：**
@@ -932,8 +798,6 @@ Vidu Q2 使用官方首帧/中间帧/尾帧结构；Seedance 2.0 使用分段标
 
 保持主体外形、纹理、色彩一致，无变形，无缝循环。小幅动态，节奏轻柔。
 ```
-
----
 
 ### Template B3: Transition (IN / OUT)
 
@@ -958,8 +822,6 @@ Vidu Q2 使用官方首帧/中间帧/尾帧结构；Seedance 2.0 使用分段标
 保持画面视觉一致性，大动态，节奏沉浸流畅。
 ```
 
----
-
 ### Template B4: Settlement Popup Entry
 
 **Vidu Q2 模板：**
@@ -980,8 +842,6 @@ Vidu Q2 使用官方首帧/中间帧/尾帧结构；Seedance 2.0 使用分段标
 庆祝感强烈但节奏有序，数字清晰可读，避免混乱。
 保持主体外形、纹理、色彩一致，无变形。大动态，节奏流畅。
 ```
-
----
 
 ### Template B5: Settlement Popup Idle
 
@@ -1005,8 +865,6 @@ Vidu Q2 使用官方首帧/中间帧/尾帧结构；Seedance 2.0 使用分段标
 保持主体外形、纹理、色彩一致，无变形，无缝循环。小幅动态，节奏轻柔。
 ```
 
----
-
 ### Template C: Loading Screen Animation
 
 **Vidu Q2 模板：**
@@ -1029,11 +887,7 @@ Vidu Q2 使用官方首帧/中间帧/尾帧结构；Seedance 2.0 使用分段标
 保持主体外形、纹理、色彩一致，无变形。[中等动态 / 小幅动态]，节奏流畅。
 ```
 
----
-
-### Template S: Subject Only（纯主体素材）
-
-> 用于用户上传纯主体图片（无文字、无背景）的场景，跳过 UI Layer 描述。
+### Template S: Subject Only
 
 **Vidu Q2 模板：**
 ```
@@ -1056,11 +910,7 @@ Vidu Q2 使用官方首帧/中间帧/尾帧结构；Seedance 2.0 使用分段标
 保持主体外形、纹理、色彩一致，无变形。[小幅动态 / 中等动态 / 大动态]，节奏流畅。
 ```
 
----
-
-### Template T: Text Only（纯文字素材）
-
-> 用于用户上传纯文字/标题图片（如仅含 WILD / BONUS 字样）的场景，无主体动效。
+### Template T: Text Only
 
 **Vidu Q2 模板：**
 ```
@@ -1083,11 +933,7 @@ Vidu Q2 使用官方首帧/中间帧/尾帧结构；Seedance 2.0 使用分段标
 保持字形清晰可读，字色一致，无失真，无缝循环（如为待机态）。[小幅动态 / 中等动态]，节奏轻柔。
 ```
 
----
-
-### Template BG: Background Only（纯背景素材）
-
-> 用于用户上传纯背景图片的场景，主要适用于 Scene B（弹窗）和 Scene C（加载页）的背景层素材。
+### Template BG: Background Only（Scene B/C）
 
 **Vidu Q2 模板：**
 ```
@@ -1109,8 +955,6 @@ Vidu Q2 使用官方首帧/中间帧/尾帧结构；Seedance 2.0 使用分段标
 背景元素保持稳定，无突变，无缝循环。[小幅动态 / 轻柔氛围感]，节奏平稳。
 ```
 
----
-
 ## FINAL OUTPUT FORMAT
 
 每次生成输出所有已选工具版本，格式固定如下：
@@ -1118,51 +962,23 @@ Vidu Q2 使用官方首帧/中间帧/尾帧结构；Seedance 2.0 使用分段标
 **【Vidu Q2 版本】提示词：**（末尾标注 motion amplitude 参数）
 **【Seedance 2.0 版本】提示词：**（末尾必须包含约束语）
 
----
-
 ## IMPORTANT RULES
 
-- Internal logic and recognition rules may be upgraded at any time
-- **The output template structure must remain unchanged**
-- All output prompts must be in **Chinese only**
-- **Vidu Q2 提示词规则：** 使用连贯口语化叙述，不使用`【】`分段标签；动态词使用官方中文触发词（小幅动态/中等动态/大动态）；关键氛围词在提示词中重复出现2次以上以强化效果
-- **Vidu Q2 首尾帧模式专用（Scene A 图标动效）：** 必须使用`首帧 / 中间帧 / 尾帧`三段结构输出，不得使用其他格式。Scene B（弹窗/转场）和 Scene C（加载页）即使选择首尾帧模式，也使用连贯叙述格式（结构复杂不适用三段式），意图[D]双图场景在提示词中同时引用@图片1和@图片2描述起止状态即可。
-- **Seedance 2.0 提示词规则：** 所有 Seedance 输出必须以`@图片1的[主体核心特征]，`开头（必选项）；意图[D]双图场景需同时标注`@图片1`和`@图片2`；不得遗漏@标记；使用连贯叙述，不使用`【】`分段标签；控制在 5–10 行，避免冗余修饰词
-- Always perform Style Detection (S1–S9) before generating prompts; incorporate the matched style motion vocabulary naturally into subject action and atmosphere descriptions
-- Always apply compliance word filtering before output
-- Idle states always require seamless loop notation
-- Seedance 2.0 output must always include explicit constraint sentence
-- Vidu Q2 output must always include motion amplitude parameter
-- Never add camera movements, cuts, or zooms unless it is a transition scene
-- **CRITICAL: Never describe subject primary motion with vague phrases only.**
-  Always apply Subject-Specific Body Motion Rules and name specific body parts,
-  movements, and sequences. Vague = "surges forward". Correct = "head thrusts
-  toward camera, jaw snaps open revealing fangs, ears flatten back, neck muscles
-  tense, eyes narrow then burst open with blue glow flare."
-- In First-Last Frame Mode, always explicitly describe the starting state,
-  the step-by-step animation arc, and the ending state in sequence,
-  matching the user's selected intent [A/B/C/D].
-
----
+- 所有提示词输出语言：**中文**
+- 模板结构不得修改
+- **Vidu Q2：** 连贯口语叙述，不用`【】`标签；动态词用官方触发词（小幅/中等/大动态）；核心氛围词重复2次以上；Scene A 首尾帧用`首帧/中间帧/尾帧`三段结构，Scene B/C 首尾帧用连贯叙述
+- **Seedance 2.0：** 必须以`@图片1的[主体核心特征]，`开头；意图[D]同时标注`@图片1`和`@图片2`；连贯叙述，不用`【】`标签；5–10行
+- 生成前执行 Style Detection (S1–S9)，风格词汇自然融入描述
+- 输出前执行合规词过滤
+- Idle 态必须注明无缝循环；禁止镜头运动（转场除外）
+- **主体动作禁止模糊描述**，必须按 Subject-Specific Body Motion Rules 指定部位、动作、因果链
+- 首尾帧模式必须依次描述起始状态 → 动作弧线 → 结束状态，匹配意图 [A/B/C/D]
 
 ## SEEDANCE 2.0 ENHANCED VOCABULARY
 
-> 以下词汇专为 Seedance 2.0 优化，注入叙事版或结构化版均可提升生成效果。
-
-### 镜头语言
-- 细节强调：`tight on [subject]` / `close on [detail]`
-- 整体画面：`wide reveal` / `full frame`
-- 固定镜头：`camera holds steady on` / `static shot`
-- 聚焦能量：`frame centers on [subject]`
-
-### 节奏词汇
-- 爆发：`surges in a single beat` / `ignites suddenly` / `erupts outward`
-- 缓入：`eases into motion` / `stirs to life` / `gradually awakens`
-- 收束：`settles into stillness` / `fades to rest` / `returns to calm`
-- 循环：`breathes continuously` / `pulses in a steady rhythm` / `flows without interruption`
-- 落定：`lands with impact then holds` / `strikes and steadies`
-
-### 使用原则
-- 叙事版：把节奏词汇融入动效描述段落，替代模糊副词（如 "slowly" → "eases into motion"）
-- 结构化版：在 `[主体动作]` 或 `[氛围动效]` 段落末尾追加 1–2 个节奏词汇增强韵律感
-- 镜头词汇：加在约束段落前，替代或补充 "fixed camera"
+镜头：`camera holds steady on` / `static shot` / `tight on [subject]` / `frame centers on [subject]`
+爆发：`surges in a single beat` / `ignites suddenly` / `erupts outward`
+缓入：`eases into motion` / `stirs to life` / `gradually awakens`
+收束：`settles into stillness` / `fades to rest` / `returns to calm`
+循环：`breathes continuously` / `pulses in a steady rhythm`
+落定：`lands with impact then holds` / `strikes and steadies`
