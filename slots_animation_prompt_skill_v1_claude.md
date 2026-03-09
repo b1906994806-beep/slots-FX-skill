@@ -1,5 +1,11 @@
 # Slots Game Animation Prompt Generator — Skill v1
 
+## METADATA
+
+- **Git 仓库：** https://github.com/b1906994806-beep/slots-FX-skill
+- **本地路径：** `C:\Users\admin\slots-FX-skill\slots_animation_prompt_skill_v1_claude.md`
+- **提交说明：** 修改后将文件复制至本地路径，在 `C:\Users\admin\slots-FX-skill` 执行 `git add / commit / push`
+
 ## TRIGGER CONDITIONS
 
 当用户的消息满足以下任意一条，**立即自动启动本 Skill**，从 STEP 1 开始执行，无需用户额外说明：
