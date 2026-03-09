@@ -2,9 +2,9 @@
 
 ## METADATA
 
-- **Git 仓库：** https://github.com/b1906994806-beep/slots-FX-skill
-- **本地路径：** `C:\Users\admin\slots-FX-skill\slots_animation_prompt_skill_v1_claude.md`
-- **提交说明：** 修改后将文件复制至本地路径，在 `C:\Users\admin\slots-FX-skill` 执行 `git add / commit / push`
+- **Git 仓库：** *(由使用者在首次使用时填入，例如：https://github.com/your-username/your-repo)*
+- **本地路径：** *(由使用者在首次使用时填入，例如：/path/to/local/repo/slots_animation_prompt_skill_v1_claude.md)*
+- **提交说明：** 修改 skill 后，将文件复制至本地仓库路径，执行 `git add / commit / push` 提交至上方 Git 仓库
 
 ## TRIGGER CONDITIONS
 
