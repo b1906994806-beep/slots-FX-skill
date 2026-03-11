@@ -82,6 +82,10 @@ C. 加载页开场动画
 | v1 优化16 | 头脑风暴后新增 UI Layer 文字动效完整规则体系：①UI Layer Motion Rules（10种动效类型库、主体-文字联动时序、按图标类型推荐矩阵、硬性约束）；②INTENSITY MAPPING 新增 UI Layer 列（文字强度永远低主体一档）；③新增 STEP 3A-3b 素材类型识别节点；④新增 Template S（纯主体）/ Template T（纯文字）/ Template BG（纯背景）三个单层素材专属模板；⑤Template UI（交互按钮）记入待办 |
 | v1 优化17 | 新增 STEP 4 方案预览步骤：用户选动效方向(A-F)+强度+预览形式，Skill 自动决定差异维度（9组状态映射），输出 2-3 个候选方案，用户确认后再生成完整提示词；MANDATORY EXECUTION RULES 补充第10条 |
 | v1 优化18 | Codex Issue 批量处理（#4-#11）：①MANDATORY EXECUTION RULES 补充 3B-3b/3C-2b 守门步骤；②IMPORTANT RULES 明确 Vidu 三段结构仅适用 Scene A；③STEP 4-3 新增动效方向偏置映射表（A-F × 四维度）；④新增多主体主从规则（Primary Driver/Secondary Follower）；⑤Scene B/C 各自新增信息层级优先级表；⑥STEP 4 新增排除项输入及硬性约束规则；⑦新增批量全档模式 [ABC]；⑧素材/风格识别增加低置信度双候选确认分支 |
+| v1 优化19 | 修复 STEP 4-5 确认范围说明：批量全档 [ABC] 模式跳过单方案预览，直接输出轻/中/强三档并询问确认 |
+| v1 优化20 | Token 精简（-4%）：移除 Skill Goal 章节及双语步骤标签，压缩 COMPLIANCE/词汇表/FINAL OUTPUT FORMAT 章节 |
+| v1 优化21 | Token 大幅精简（-185行）：移除步骤级重复警告、分隔线、STEP 4格式示例、SEEDANCE词汇表压缩至6行、IMPORTANT RULES 精简、模板注释移除；素材识别置信度 ≥90% 自动通过 |
+| v1 优化22 | 删除所有输出模板开头平台触发前缀词（「娱乐游戏数字转轴符号」「娱乐游戏 Free Game」等短语），规避平台内容过滤 |
 
 ---
 
