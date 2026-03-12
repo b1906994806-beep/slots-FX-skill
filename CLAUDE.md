@@ -13,8 +13,13 @@
 
 | 文件 | 说明 |
 |------|------|
-| `slots_animation_prompt_skill_v1_claude.md` | **主 Skill 文件**（仓库根目录，当前最新版本） |
+| `slots-fx-prompt/SKILL.md` | **主 Skill 入口**（微文件架构，97行，三层渐进式加载） |
+| `slots-fx-prompt/references/` | 步骤/规则/配置（按需加载到上下文） |
+| `slots-fx-prompt/assets/` | 输出模板（不进上下文，仅路径引用） |
+| `slots_animation_prompt_skill_v1_claude.md` | 旧版单文件（990行，归档保留） |
 | `brainstorming/` | 历次头脑风暴设计记录 |
+
+**安装路径：** `C:\Users\admin\.claude\skills\slots-fx-prompt\`（已安装为 Claude Code Skill）
 
 ---
 
@@ -86,6 +91,7 @@ C. 加载页开场动画
 | v1 优化20 | Token 精简（-4%）：移除 Skill Goal 章节及双语步骤标签，压缩 COMPLIANCE/词汇表/FINAL OUTPUT FORMAT 章节 |
 | v1 优化21 | Token 大幅精简（-185行）：移除步骤级重复警告、分隔线、STEP 4格式示例、SEEDANCE词汇表压缩至6行、IMPORTANT RULES 精简、模板注释移除；素材识别置信度 ≥90% 自动通过 |
 | v1 优化22 | 删除所有输出模板开头平台触发前缀词（「娱乐游戏数字转轴符号」「娱乐游戏 Free Game」等短语），规避平台内容过滤 |
+| v2 结构重构 | 微文件三层架构重构：SKILL.md 从 990 行压缩至 97 行；references/（10个子文件，按需加载）+ assets/（5个模板，不进上下文）；预计节省 ~55% 上下文消耗 |
 
 ---
 
@@ -94,7 +100,7 @@ C. 加载页开场动画
 1. **先检查 GitHub Issues**：`gh issue list -R b1906994806-beep/slots-FX-skill --state open`
    - 查看有无未处理的 `optimization-idea` 或 `bug` Issue
    - 优先处理高优先级 Issue，再进行新的优化
-2. **读取主 Skill 文件**：`slots_animation_prompt_skill_v1_claude.md`
+2. **读取主 Skill 文件**：`slots-fx-prompt/SKILL.md`（新架构）；旧版参考：`slots_animation_prompt_skill_v1_claude.md`
 3. **描述具体问题**，Claude 定位需修改的段落后直接 Edit
 4. **测试方式**：上传实际图片运行 Skill，观察输出质量
 5. **版本记录**：每次优化后在本文件「已知优化历史」表格中追加记录
