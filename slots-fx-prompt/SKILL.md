@@ -11,9 +11,9 @@ allowed-tools: Read
 version: 1.0.0
 ---
 
-# Slots FX Prompt Generator
+# Slots 动效提示词生成器
 
-## TRIGGER CONDITIONS
+## 触发条件
 
 **关键词触发**（含以下任意一词即触发）：
 Vidu / Seedance / Vidu Q2 / Seedance 2.0 / 动效提示词 / 图标动效 / 待机动效 /
@@ -29,7 +29,7 @@ Reel Symbol / Wild 图标 / Scatter 图标 / Bonus 图标 / Free Game 弹窗 /
 
 ---
 
-## MANDATORY EXECUTION RULES
+## 强制执行规则
 
 🛑 **以下所有步骤均由用户明确确认后，才可生成提示词：**
 
@@ -80,7 +80,7 @@ Reel Symbol / Wild 图标 / Scatter 图标 / Bonus 图标 / Free Game 弹窗 /
 
 ```
 【Vidu Q2 版本】提示词：
-（末尾标注 motion amplitude 参数）
+（末尾标注运动幅度参数）
 
 【Seedance 2.0 版本】提示词：
 （末尾必须包含显式约束语）

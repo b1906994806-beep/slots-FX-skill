@@ -1,36 +1,36 @@
 # 风格运动档案（S1–S9）+ 强度映射表
 
-## STYLE MOTION PROFILES
+## 风格运动档案
 
-| 风格 | 运动特征 | Vidu 增强词 | Seedance 增强词 |
-|------|---------|-----------|--------------|
-| **S1 3D卡通** | 弹性拉伸，卡通物理，活泼回弹，夸张缓冲 | springy / bouncy / elastic snap / cartoon bounce | rubbery / snappy / playful weight / bubbly |
-| **S2 3D写实史诗** | 物理重量感，戏剧性能量爆发，电影级节奏 | cinematic weight / dramatic surge / epic burst | weighted / powerful / sweeping / cinematic momentum |
-| **S3 2D精绘插画** | 流畅分层运动，笔触韵律，优雅有序 | layered flow / painterly rhythm / graceful sweep | fluid layers / brushwork feel / elegant pacing |
-| **S4 动漫/Anime** | 爆发性动作，速度感强，闪光粒子密集 | anime burst / speed impact / sparkle explosion | snappy / expressive / energy flash / speed lines feel |
-| **S5 霓虹发光** | 电流脉冲，光轨扫射，能量循环感 | neon pulse / electric trail / glow sweep / light ring | pulsing glow / electric surge / neon cascade / light cycle |
-| **S6 奢华金属** | 缓慢优雅，金色扫光，精致流动 | golden shimmer / elegant drift / luxury glow / regal sweep | slow golden sweep / refined glow / opulent flow |
-| **S7 暗黑哥特** | 阴郁流动，雾气弥漫，戏剧性明暗交替 | shadow drift / dark surge / ominous pulse / gothic flow | sinister flow / dramatic shadow / fog drift / dark energy |
-| **S8 Q版萌系** | 超级弹跳，泡泡感爆发，欢快节奏 | super bounce / bubbly pop / joyful burst / candy spring | ultra bouncy / pop explosion / playful surge / cheerful snap |
-| **S9 印度宝莱坞** | 花瓣飘落，珠宝闪烁，舞蹈律动，华丽绽放 | ornate flourish / jewel sparkle / dance rhythm / petal drift | celebratory bloom / jeweled shimmer / graceful dance / festive burst |
+| 风格 | 运动特征 | 动作氛围词（融入提示词） |
+|------|---------|----------------------|
+| **S1 3D卡通** | 弹性拉伸，卡通物理，活泼回弹，夸张缓冲 | 弹性十足 / 活泼回弹 / 卡通弹跳感 / 夸张缓冲 |
+| **S2 3D写实史诗** | 物理重量感，戏剧性能量爆发，电影级节奏 | 重量感十足 / 戏剧性爆发 / 电影级节奏 / 磅礴有力 |
+| **S3 2D精绘插画** | 流畅分层运动，笔触韵律，优雅有序 | 分层流动 / 笔触韵律感 / 优雅舒展 / 层次细腻 |
+| **S4 动漫/Anime** | 爆发性动作，速度感强，闪光粒子密集 | 爆发冲击 / 速度感强烈 / 闪光密集 / 动作锐利 |
+| **S5 霓虹发光** | 电流脉冲，光轨扫射，能量循环感 | 电流脉冲感 / 光轨扫射 / 霓虹流光循环 / 能量闪烁 |
+| **S6 奢华金属** | 缓慢优雅，金色扫光，精致流动 | 缓慢优雅 / 金色扫光流转 / 精致从容 / 高贵流动感 |
+| **S7 暗黑哥特** | 阴郁流动，雾气弥漫，戏剧性明暗交替 | 阴郁流动 / 雾气弥漫 / 戏剧明暗交替 / 沉重压迫感 |
+| **S8 Q版萌系** | 超级弹跳，泡泡感爆发，欢快节奏 | 超级弹跳 / 泡泡爆发感 / 欢快节奏 / 糖果弹性 |
+| **S9 印度宝莱坞** | 花瓣飘落，珠宝闪烁，舞蹈律动，华丽绽放 | 花瓣飘落 / 珠宝闪烁 / 舞蹈律动感 / 华丽绽放 |
 
 ---
 
-## INTENSITY MAPPING
+## 强度映射表
 
-> Vidu Q2 使用官方中文触发词；Seedance 使用语言描述词。
-> UI Layer 文字动效强度**永远低于主体一档**。
+> Vidu Q2 使用官方中文动态词；Seedance 使用中文描述词。
+> UI 层文字动效强度**永远低于主体一档**。
 
-| Level | Icon Type | 主体 Vidu Q2 | 主体 Seedance | UI Layer Vidu | UI Layer Seedance |
-|-------|-----------|-------------|--------------|---------------|-------------------|
-| Level 1 | Low-tier (Win) | 小幅动态 | Subtle / Gentle / Minimal | — | — |
-| Level 2 | High-tier (Win) | 中等动态 | Moderate / Smooth / Controlled | 小幅动态 | Subtle sweep |
-| Level 3 Win | Special (Wild/Scatter/Bonus) | 大动态 | Dynamic / Energetic / Expressive | 中等动态 | Moderate / Energetic |
-| Level 3 Idle | Special (Wild/Scatter/Bonus) | 中等动态 | Gentle / Continuous / Soft | 小幅动态 | Gentle / Continuous |
-| Level 3 Land | Special (Wild/Scatter/Bonus) | 中等动态 | Moderate / Impactful / Snappy | 小幅动态 | Subtle burst |
-| Scatter Anticipation | Scatter only | — | — | 小幅动态 | Subtle anticipatory flicker |
-| Popup Entry | — | 大动态 | Bold / Dramatic / Impactful | — | — |
-| Popup Idle | — | 小幅动态 | Gentle / Continuous / Soft | — | — |
-| Transition | — | 大动态 | Sweeping / Immersive / Fluid | — | — |
-| Loading One-shot | — | 中等动态 | Progressive / Clear / Cinematic | — | — |
-| Loading Loop | — | 小幅动态 | Ambient / Seamless / Breathable | — | — |
+| 场景 | 图标类型 | 主体 Vidu Q2 | 主体 Seedance | UI 层 Vidu | UI 层 Seedance |
+|------|---------|-------------|--------------|-----------|----------------|
+| Level 1 低级图标中奖 | 低级图标 | 小幅动态 | 轻柔细腻 | — | — |
+| Level 2 高级图标中奖 | 高级图标 | 中等动态 | 中等流畅 | 小幅动态 | 轻柔扫光 |
+| Level 3 中奖 | Wild/Scatter/Bonus | 大动态 | 充沛动感 | 中等动态 | 中等能量感 |
+| Level 3 待机 | Wild/Scatter/Bonus | 中等动态 | 轻柔持续 | 小幅动态 | 轻柔持续 |
+| Level 3 落定 | Wild/Scatter/Bonus | 中等动态 | 中等冲击 | 小幅动态 | 轻柔短促爆发 |
+| 期待抖动 | 仅 Scatter | — | — | 小幅动态 | 轻柔预期抖动 |
+| 弹窗入场 | — | 大动态 | 强烈戏剧冲击 | — | — |
+| 弹窗待机 | — | 小幅动态 | 轻柔持续 | — | — |
+| 转场 | — | 大动态 | 大气沉浸流畅 | — | — |
+| 加载页单次播放 | — | 中等动态 | 渐进清晰电影感 | — | — |
+| 加载页循环播放 | — | 小幅动态 | 大气无缝呼吸感 | — | — |
