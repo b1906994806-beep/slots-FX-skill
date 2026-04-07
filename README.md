@@ -50,6 +50,40 @@ slots-FX-skill/
 
 ---
 
+## 安装方法
+
+### 前提条件
+
+- 已安装 [Claude Code](https://claude.ai/code)
+
+### 安装步骤
+
+**1. 克隆仓库**
+
+```bash
+git clone https://github.com/b1906994806-beep/slots-FX-skill.git
+```
+
+**2. 将 Skill 复制到 Claude Code skills 目录**
+
+```bash
+# Windows
+xcopy slots-FX-skill\slots-fx-prompt "%USERPROFILE%\.claude\skills\slots-fx-prompt" /E /I
+
+# Mac / Linux
+cp -r slots-FX-skill/slots-fx-prompt ~/.claude/skills/slots-fx-prompt
+```
+
+**3. 重启 Claude Code，输入以下命令触发 Skill：**
+
+```
+/slots-fx-prompt
+```
+
+或直接上传图片并在消息中包含关键词（如"动效"、"Vidu"、"Seedance"、"弹窗动效"等）即可自动触发。
+
+---
+
 ## 当前版本
 
 **v2 结构重构** (2026-03-12)
