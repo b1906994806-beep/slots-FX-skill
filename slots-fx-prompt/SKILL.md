@@ -50,6 +50,7 @@ Reel Symbol / Wild 图标 / Scatter 图标 / Bonus 图标 / Free Game 弹窗 /
 | 13 | STEP 4 | 方案预览已输出，用户已选定方案 | 用户已选定唯一方案编号；选定前禁止进入生成阶段 |
 
 ⚠️ 用户消息含部分信息时，仍需逐步确认所有未明确步骤，禁止自动填充。
+✅ STEP 1.3 为可选步骤：用户选 [S] Spine 时读取 spine-constraints.md 并全流程应用约束；跳过则无落地约束。
 ✅ 图片上传可在任意时间点，但分析仅在所有配置步骤确认后开始。
 ✅ STEP 3A-3b 确认素材类型 → 经过 STEP 4 预览 → 再路由至对应模板生成。
 ✅ Scene A 中检测到纯背景素材：立即提示改选 Scene B/C 或重新上传，不得继续生成。
@@ -62,6 +63,7 @@ Reel Symbol / Wild 图标 / Scatter 图标 / Bonus 图标 / Free Game 弹窗 /
 执行时按需读取对应文件：
 
 - **STEP 1–2**（工具/模式/场景）→ 读取 `{baseDir}/references/steps-1-2.md`
+- **Spine 约束**（STEP 1.3 选 [S] 时）→ 读取 `{baseDir}/references/spine-constraints.md`
 - **STEP 3A**（图标流程）→ 读取 `{baseDir}/references/steps-3a-icon.md`
 - **STEP 3B**（弹窗流程）→ 读取 `{baseDir}/references/steps-3b-popup.md`
 - **STEP 3C**（加载页流程）→ 读取 `{baseDir}/references/steps-3c-loading.md`
