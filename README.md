@@ -14,7 +14,11 @@ AI 视频工具提示词生成 Skill，用于 Slots 游戏动效素材制作。
 
 ```
 slots-FX-skill/
-├── slots_animation_prompt_skill_v1_claude.md   # 主 Skill 文件
+├── slots-fx-prompt/
+│   ├── SKILL.md                                # 主 Skill 入口（微文件架构）
+│   ├── references/                             # 步骤/规则/配置（按需加载）
+│   └── assets/                                 # 输出模板（路径引用，不进上下文）
+├── slots_animation_prompt_skill_v1_claude.md   # 旧版单文件（归档保留）
 ├── CLAUDE.md                                   # 项目配置与优化历史
 ├── AGENTS.md                                   # Codex Agent 工作指南
 └── brainstorming/
@@ -48,7 +52,7 @@ slots-FX-skill/
 
 ## 当前版本
 
-**v1 优化22**(2026-03-11)
+**v2 结构重构** (2026-03-12)
 
 | 版本 | 优化内容 |
 |------|---------|
@@ -75,3 +79,6 @@ slots-FX-skill/
 | v1 优化20 | Token 精简（-4%）：移除 Skill Goal 章节及双语步骤标签，压缩 COMPLIANCE/词汇表/FINAL OUTPUT FORMAT 章节 |
 | v1 优化21 | Token 大幅精简（-185行）：移除步骤级重复警告、分隔线、STEP 4格式示例、SEEDANCE词汇表压缩至6行、IMPORTANT RULES 精简、模板注释移除；素材识别置信度 ≥90% 自动通过 |
 | v1 优化22 | 删除所有输出模板开头平台触发前缀词（「娱乐游戏数字转轴符号」「娱乐游戏 Free Game」等短语），规避平台内容过滤 |
+| v2 结构重构 | 微文件三层架构重构：主入口切换为 `slots-fx-prompt/SKILL.md`；`references/` 按需加载步骤与规则；`assets/` 存放模板并通过路径引用；旧版单文件保留为归档参考 |
+| v2 优化1（Phase 1）| MANDATORY EXECUTION RULES 补充完成标准列；step-4-preview.md 新增 4-6 生成后验证（9项检查清单）；STEP 2D 补充纯背景拦截守门节点 |
+| v2 优化2 | Scene B 新增 STEP 3B-3c 核心素材识别节点：AI 实时分析弹窗核心主题素材（动物/魔法阵/宝物/自然元素/人物），用户确认或纠正；多核心素材时用户选定主次；无核心素材时询问是否引入新素材（需上传图片）；STEP 4 动效方向推荐与核心素材强绑定 |
