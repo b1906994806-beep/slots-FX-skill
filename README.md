@@ -116,3 +116,4 @@ cp -r slots-FX-skill/slots-fx-prompt ~/.claude/skills/slots-fx-prompt
 | v2 结构重构 | 微文件三层架构重构：主入口切换为 `slots-fx-prompt/SKILL.md`；`references/` 按需加载步骤与规则；`assets/` 存放模板并通过路径引用；旧版单文件保留为归档参考 |
 | v2 优化1（Phase 1）| MANDATORY EXECUTION RULES 补充完成标准列；step-4-preview.md 新增 4-6 生成后验证（9项检查清单）；STEP 2D 补充纯背景拦截守门节点 |
 | v2 优化2 | Scene B 新增 STEP 3B-3c 核心素材识别节点：AI 实时分析弹窗核心主题素材（动物/魔法阵/宝物/自然元素/人物），用户确认或纠正；多核心素材时用户选定主次；无核心素材时询问是否引入新素材（需上传图片）；STEP 4 动效方向推荐与核心素材强绑定 |
+| v2 优化3 | 新增 STEP 1.3 制作工具可选项（Spine/帧动画/跳过）；新增 spine-constraints.md：禁止大转面/3D透视/复杂粒子，推荐位移/旋转/缩放/颜色，人物类自动附加视角固定约束，输出末尾附加 Spine 参考说明 |
